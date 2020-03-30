@@ -79,17 +79,17 @@ class App extends Component {
             path="/chat"
             authenticated={this.state.authenticated}
             component={Chat}
-          ></PrivateRoute>
-          <PublicRoute
+          />
+          {/* <PublicRoute
             path="/signup"
             authenticated={this.state.authenticated}
             component={Signup}
-          ></PublicRoute>
+          /> */}
           <PublicRoute
             path="/login"
             authenticated={this.state.authenticated}
             component={Login}
-          ></PublicRoute>
+          />
         </Switch>
       </Router>
     );
