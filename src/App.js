@@ -80,11 +80,11 @@ class App extends Component {
             authenticated={this.state.authenticated}
             component={Chat}
           />
-          {/* <PublicRoute
+          <PublicRoute
             path="/signup"
             authenticated={this.state.authenticated}
             component={Signup}
-          /> */}
+          />
           <PublicRoute
             path="/login"
             authenticated={this.state.authenticated}
