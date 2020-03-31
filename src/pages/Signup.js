@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { signup } from "../helpers/auth";
+import { signup, signInWithGoogle, signInWithGitHub } from "../helpers/auth";
 
 export default class SignUp extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       error: null,
       email: "",
@@ -12,6 +12,8 @@ export default class SignUp extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.googleSignIn = this.googleSignIn.bind(this);
+    this.githubSignIn = this.githubSignIn.bind(this);
   }
 
   handleChange(event) {
@@ -30,17 +32,37 @@ export default class SignUp extends Component {
     }
   }
 
+  async googleSignIn() {
+    try {
+      await signInWithGoogle();
+    } catch (error) {
+      this.setState({ error: error.message });
+    }
+  }
+
+  async githubSignIn() {
+    try {
+      await signInWithGitHub();
+    } catch (error) {
+      console.log(error);
+      this.setState({ error: error.message });
+    }
+  }
+
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className="container">
+        <form className="mt-5 py-5 px-5" onSubmit={this.handleSubmit}>
           <h1>
-            Sign Up to
-            <Link to="/"> MagHour</Link>
+            Sign Up to{" "}
+            <Link className="title ml-2" to="/">
+              MagHour
+            </Link>
           </h1>
-          <p>Fill in the form below to create an account.</p>
-          <div>
+          <p className="lead">Fill in the form below to create an account.</p>
+          <div className="form-group">
             <input
+              className="form-control"
               placeholder="Email"
               name="email"
               type="email"
@@ -48,8 +70,9 @@ export default class SignUp extends Component {
               value={this.state.email}
             ></input>
           </div>
-          <div>
+          <div className="form-group">
             <input
+              className="form-control"
               placeholder="Password"
               name="password"
               onChange={this.handleChange}
@@ -57,10 +80,29 @@ export default class SignUp extends Component {
               type="password"
             ></input>
           </div>
-          <div>
-            {this.state.error ? <p>{this.state.error}</p> : null}
-            <button type="submit">Sign up</button>
+          <div className="form-group">
+            {this.state.error ? (
+              <p className="text-danger">{this.state.error}</p>
+            ) : null}
+            <button className="btn btn-primary px-5" type="submit">
+              Sign up
+            </button>
           </div>
+          <p>You can also sign up with any of these services</p>
+          <button
+            className="btn btn-danger mr-2"
+            type="button"
+            onClick={this.googleSignIn}
+          >
+            Sign up with Google
+          </button>
+          <button
+            className="btn btn-secondary"
+            type="button"
+            onClick={this.githubSignIn}
+          >
+            Sign up with GitHub
+          </button>
           <hr></hr>
           <p>
             Already have an account? <Link to="/login">Login</Link>

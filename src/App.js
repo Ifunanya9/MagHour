@@ -10,6 +10,7 @@ import Chat from "./pages/Chat";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import { auth } from "./services/firebase";
+import "./styles.css";
 
 function PrivateRoute({ component: Component, authenticated, ...rest }) {
   return (
@@ -70,11 +71,13 @@ class App extends Component {
 
   render() {
     return this.state.loading === true ? (
-      <h2>Loading...</h2>
+      <div className="spinner-border text-success" role="status">
+        <span className="sr-only">Loading...</span>
+      </div>
     ) : (
       <Router>
         <Switch>
-          <Route exact path="/" component={Home}></Route>
+          <Route exact path="/" component={Home} />
           <PrivateRoute
             path="/chat"
             authenticated={this.state.authenticated}
