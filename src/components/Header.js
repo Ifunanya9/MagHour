@@ -1,17 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { auth } from "../services/firebase";
+import "./nav.css";
+import logo from "../logo.svg";
 
 function Header() {
   return (
     <header>
-      <nav className="navbar navbar-expand-sm fixed-top navbar-light bg-light">
-        <h1>
-          <Link className="title ml-2 navbar-brand" to="/">
-            MagHour
-          </Link>
-        </h1>
-
+      <nav className="navbar navbar-expand-md fixed-top navbar-dark bg-steel">
+        <div className="container"></div>
+        <img src={logo} alt="maghour" />
+        <Link className="navbar-brand mr-4" to="/">
+          MagHour
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -23,17 +24,14 @@ function Header() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div
-          className="collapse navbar-collapse justify-content-end"
-          id="navbarNavAltMarkup"
-        >
+        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           {auth().currentUser ? (
             <div className="navbar-nav">
-              <Link className="nav-item nav-link mr-3" to="/chat">
+              <Link className="nav-item nav-link profile" to="/chat">
                 Profile
               </Link>
               <button
-                className="btn btn-primary mr-3"
+                className="btn btn-primary nav item logout"
                 onClick={() => auth().signOut()}
               >
                 Logout
@@ -41,11 +39,14 @@ function Header() {
             </div>
           ) : (
             <div className="navbar-nav">
-              <Link className="nav-item nav-link mr-3" to="/login">
-                Sign In
+              <Link className="nav-item nav-link signin" to="/login">
+                SignIn
               </Link>
-              <Link className="nav-item nav-link mr-3" to="/signup">
-                Sign Up
+              <Link className="nav-item nav-link signup" to="/signup">
+                SignUp
+              </Link>
+              <Link className="nav-item nav-link about" to="/chat">
+                About
               </Link>
             </div>
           )}

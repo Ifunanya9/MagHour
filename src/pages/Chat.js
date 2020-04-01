@@ -65,8 +65,9 @@ export default class Chat extends Component {
 
   formatTime(timestamp) {
     const d = new Date(timestamp);
-    const time = `${d.getDate()}/${d.getMonth() +
-      1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}`;
+    const time = `Made By:${this.state.user.email} 
+    ${d.getDate()}/${d.getMonth() +
+      1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()} `;
     return time;
   }
 

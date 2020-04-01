@@ -1,4 +1,6 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/database";
 
 const config = {
   apiKey: "AIzaSyDRr8v9cnnZhpkmhn-sQOGf20FpgD_tH0A",
@@ -6,5 +8,6 @@ const config = {
   databaseURL: "https://maghour-42f2a.firebaseio.com"
 };
 firebase.initializeApp(config);
+
 export const auth = firebase.auth;
 export const db = firebase.database();
