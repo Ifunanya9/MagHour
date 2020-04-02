@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
 import { signin, signInWithGoogle, signInWithGitHub } from "../helpers/auth";
+import "./signin.css";
 
 export default class Login extends Component {
   constructor() {
@@ -51,15 +53,17 @@ export default class Login extends Component {
   render() {
     return (
       <div className="container">
+        <Header></Header>
+        <br />
         <form
           className="mt-5 py-5 px-5"
           autoComplete="off"
           onSubmit={this.handleSubmit}
         >
           <h1>
-            Login to
+            <div className="title-text">Login to</div>
             <Link className="title ml-2" to="/">
-              {""}
+              {" "}
               MagHour
             </Link>
           </h1>
@@ -94,24 +98,31 @@ export default class Login extends Component {
               Login
             </button>
           </div>
-          <p>You can also log in with any of these services</p>
-          <button
-            className="btn btn-danger mr-2"
-            type="button"
-            onClick={this.googleSignIn}
-          >
-            Sign in with Google
-          </button>
-          <button
-            className="btn btn-secondary"
-            type="button"
-            onClick={this.githubSignIn}
-          >
-            Sign in with GitHub
-          </button>
+          <p className="also">You can also log in with any of these services</p>
+          <div className="another-google">
+            <button
+              className="btn btn-danger mr-2"
+              type="button"
+              onClick={this.googleSignIn}
+            >
+              Sign in with Google
+            </button>
+          </div>
+          <div className="another-github">
+            <button
+              className="btn btn-secondary"
+              type="button"
+              onClick={this.githubSignIn}
+            >
+              Sign in with GitHub
+            </button>
+          </div>
           <hr />
-          <p>
-            Don't have an account? <Link to="/signup">Sign up</Link>
+          <p className="already">
+            Don't have an account?{" "}
+            <Link className="move" to="/signup">
+              Sign up
+            </Link>
           </p>
         </form>
       </div>

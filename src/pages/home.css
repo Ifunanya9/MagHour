@@ -13,3 +13,11 @@
   text-decoration: none;
   color: darkblue;
 }
+
+.welcome,
+.create,
+.log,
+.foot {
+  display: flex;
+  justify-content: center;
+}

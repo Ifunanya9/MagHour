@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
 import { signup, signInWithGoogle, signInWithGitHub } from "../helpers/auth";
+import "./signin.css";
 
 export default class SignUp extends Component {
   constructor() {
@@ -52,11 +54,12 @@ export default class SignUp extends Component {
   render() {
     return (
       <div className="container">
+        <Header></Header>
         <form className="mt-5 py-5 px-5" onSubmit={this.handleSubmit}>
           <h1>
-            Sign Up to
+            <div className="title-text">Sign Up to </div>
             <Link className="title ml-2" to="/">
-              {""}MagHour
+              MagHour
             </Link>
           </h1>
           <p className="lead">Fill in the form below to create an account.</p>
@@ -88,24 +91,33 @@ export default class SignUp extends Component {
               Sign up
             </button>
           </div>
-          <p>You can also sign up with any of these services</p>
-          <button
-            className="btn btn-danger mr-2"
-            type="button"
-            onClick={this.googleSignIn}
-          >
-            Sign up with Google
-          </button>
-          <button
-            className="btn btn-secondary"
-            type="button"
-            onClick={this.githubSignIn}
-          >
-            Sign up with GitHub
-          </button>
+          <p className="also">
+            You can also sign up with any of these services
+          </p>
+          <div className="another-google">
+            <button
+              className="btn btn-danger mr-2 google"
+              type="button"
+              onClick={this.googleSignIn}
+            >
+              Sign up with Google
+            </button>
+          </div>
+          <div className="another-github">
+            <button
+              className="btn btn-secondary github"
+              type="button"
+              onClick={this.githubSignIn}
+            >
+              Sign up with GitHub
+            </button>
+          </div>
           <hr></hr>
-          <p>
-            Already have an account? <Link to="/login">Login</Link>
+          <p className="already">
+            Already have an account?{" "}
+            <Link className="move" to="/login">
+              Login
+            </Link>
           </p>
         </form>
       </div>
