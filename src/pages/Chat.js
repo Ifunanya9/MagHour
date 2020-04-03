@@ -87,6 +87,10 @@ export default class Chat extends Component {
           )}
           {/* chat area */}
 
+          {/* <Link to="/delete_post">
+            <h1>. . .</h1>
+          </Link> */}
+
           {this.state.chats.map(chat => {
             return (
               <div className="do">
@@ -108,26 +112,30 @@ export default class Chat extends Component {
             );
           })}
         </div>
+        <div className="text">
+          <form onSubmit={this.handleSubmit} className="mx-3">
+            <textarea
+              className="form-control chat-bubble"
+              name="content"
+              onChange={this.handleChange}
+              value={this.state.content}
+            ></textarea>
 
-        <form onSubmit={this.handleSubmit} className="mx-3">
-          <textarea
-            className="form-control"
-            name="content"
-            onChange={this.handleChange}
-            value={this.state.content}
-          ></textarea>
-          {this.state.error ? (
-            <p className="text-danger">{this.state.error}</p>
-          ) : null}
-          {this.state.content ? (
-            <button
-              type="submit"
-              className="btn btn-submit px-5 mt-4 button chat-bubble"
-            >
-              Send
-            </button>
-          ) : null}
-        </form>
+            {this.state.error ? (
+              <p className="text-danger">{this.state.error}</p>
+            ) : null}
+            {this.state.content ? (
+              this.state.content !== " " ? (
+                <button
+                  type="submit"
+                  className="btn btn-submit px-5 mt-4 button chat-bubble"
+                >
+                  Send
+                </button>
+              ) : null
+            ) : null}
+          </form>
+        </div>
         <div className="py-5 mx-3">
           Login in as:{" "}
           <strong className="text-info">{this.state.user.email}</strong>
