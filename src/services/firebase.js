@@ -3,10 +3,11 @@ import "firebase/auth";
 import "firebase/database";
 
 const config = {
-  apiKey: "AIzaSyDRr8v9cnnZhpkmhn-sQOGf20FpgD_tH0A",
-  authDomain: "maghour-42f2a.firebaseapp.com",
-  databaseURL: "https://maghour-42f2a.firebaseio.com"
+  apiKey: "AIzaSyBC8hrJ2ZdmxH731z4iJcw_y47U-S8zNII",
+  authDomain: "maghour-2e48d.firebaseapp.com",
+  databaseURL: "https://maghour-2e48d.firebaseio.com"
 };
+
 firebase.initializeApp(config);
 
 export const auth = firebase.auth;
