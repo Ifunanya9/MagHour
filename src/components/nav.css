@@ -112,11 +112,101 @@ h6 {
   display: flex;
   top: 60%;
   right: 0%;
-  transform: translate(1000%, -35%);
+  transform: translate(800%, -35%);
 }
 
 .profile {
   top: 60%;
   right: 0%;
-  transform: translate(700%, 0%);
+  transform: translate(500%, 0%);
+}
+
+.icon {
+  height: 70px;
+  width: 70px;
+  grid-column: 1/2;
+}
+
+@media screen and (max-width: 1250px) {
+  .profile {
+    top: 60%;
+    right: 0%;
+    transform: translate(-300%, 15%);
+  }
+  .logout {
+    top: 60%;
+    right: 0%;
+    transform: translate(-0%, -15%);
+  }
+  .signin {
+    top: 60%;
+    right: 0%;
+    transform: translate(-900%, 15%);
+  }
+  .signup {
+    top: 60%;
+    right: 0%;
+    transform: translate(-700%, 15%);
+  }
+  .about {
+    top: 60%;
+    right: 0%;
+    transform: translate(-700%, 15%);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .profile {
+    top: 60%;
+    right: 0%;
+    transform: translate(-500%, 15%);
+  }
+  .logout {
+    top: 60%;
+    right: 0%;
+    transform: translate(-400%, -15%);
+  }
+  .signin {
+    top: 60%;
+    right: 0%;
+    transform: translate(-1500%, 15%);
+  }
+  .signup {
+    top: 60%;
+    right: 0%;
+    transform: translate(-1200%, 15%);
+  }
+  .about {
+    top: 60%;
+    right: 0%;
+    transform: translate(-1300%, 15%);
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .profile {
+    top: 60%;
+    right: 0%;
+    transform: translate(-800%, 15%);
+  }
+  .logout {
+    top: 60%;
+    right: 0%;
+    transform: translate(-800%, -15%);
+  }
+  .signin {
+    top: 60%;
+    right: 0%;
+    transform: translate(-1700%, 15%);
+  }
+  .signup {
+    top: 60%;
+    right: 0%;
+    transform: translate(-1400%, 15%);
+  }
+  .about {
+    top: 60%;
+    right: 0%;
+    transform: translate(-1550%, 15%);
+  }
 }

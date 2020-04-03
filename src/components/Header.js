@@ -2,14 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { auth } from "../services/firebase";
 import "./nav.css";
-import logo from "../logo.svg";
+import logo from "../starter.png";
 
 function Header() {
   return (
     <header>
       <nav className="navbar navbar-expand-md fixed-top navbar-dark bg-steel">
         <div className="container"></div>
-        <img src={logo} alt="maghour" />
+        <img className="icon" src={logo} alt="maghour" />
         <Link className="navbar-brand mr-4" to="/">
           MagHour
         </Link>

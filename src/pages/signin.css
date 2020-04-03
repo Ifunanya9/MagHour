@@ -1,0 +1,25 @@
+.title-text,
+.title,
+.move,
+.lead,
+.form-group,
+.also,
+.already,
+.another-google,
+.another-github {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  text-decoration: none;
+  color: #444415;
+}
+
+.move {
+  text-decoration: none;
+}
+
+.btn {
+  color: black;
+}

@@ -13,23 +13,30 @@ export default class HomePage extends Component {
           <div className="footer">
             <div className="jumbotron jumbotron-fluid py-5">
               <div className="container text-center py-5">
-                <h1 className="display-4">Welcome to MagHour</h1>
+                <h1 className="display-4 welcome">Welcome to MagHour</h1>
+                <br />
                 <p className="lead">
                   A great place to share your thoughts with friends
                 </p>
+                <br />
                 <div className="mt-4">
-                  <Link className="btn btn-primary px-5 mr-3" to="/signup">
+                  <Link
+                    className="btn btn-primary px-5 mr-3 create"
+                    to="/signup"
+                  >
                     Create New Account
                   </Link>
 
-                  <Link className="btn px-5" to="/login">
+                  <Link className="btn px-5 log" to="/login">
                     Login to Your Account
                   </Link>
                 </div>
               </div>
             </div>
             <br />
-            <Footer></Footer>
+            <div className="foot">
+              <Footer></Footer>
+            </div>
           </div>
         </section>
       </div>
