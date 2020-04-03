@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import { signup, signInWithGoogle, signInWithGitHub } from "../helpers/auth";
 import "./signin.css";
+import smile from "../chatting.jpg";
 
 export default class SignUp extends Component {
   constructor() {
@@ -55,6 +56,9 @@ export default class SignUp extends Component {
     return (
       <div className="container">
         <Header></Header>
+        <img className="smile" src={smile} alt="smiling" />
+        <br />
+        <br />
         <form className="mt-5 py-5 px-5" onSubmit={this.handleSubmit}>
           <h1>
             <div className="title-text">Sign Up to </div>
@@ -83,6 +87,7 @@ export default class SignUp extends Component {
               type="password"
             ></input>
           </div>
+
           <div className="form-group">
             {this.state.error ? (
               <p className="text-danger">{this.state.error}</p>
