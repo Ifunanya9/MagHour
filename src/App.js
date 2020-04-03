@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Chat from "./pages/Chat";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import About from "./pages/About";
 import { auth } from "./services/firebase";
 import "./styles.css";
 
@@ -30,6 +31,7 @@ function PrivateRoute({ component: Component, authenticated, ...rest }) {
 }
 
 function PublicRoute({ component: Component, authenticated, ...rest }) {
+  console.log(Component);
   return (
     <Route
       {...rest}
@@ -78,6 +80,7 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
+
           <PrivateRoute
             path="/chat"
             authenticated={this.state.authenticated}
@@ -93,6 +96,7 @@ class App extends Component {
             authenticated={this.state.authenticated}
             component={Login}
           />
+          <Route path="/about" component={About} />
         </Switch>
       </Router>
     );

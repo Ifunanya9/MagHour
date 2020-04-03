@@ -73,9 +73,9 @@ export default class Chat extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <Header />
-
+        <br />
         <div className="chat-area" ref={this.myRef}>
           {/* loading indicator */}
           {this.state.loadingChats ? (
@@ -86,24 +86,29 @@ export default class Chat extends Component {
             ""
           )}
           {/* chat area */}
+
           {this.state.chats.map(chat => {
             return (
-              <p
-                key={chat.timestamp}
-                className={
-                  "chat-bubble " +
-                  (this.state.user.uid === chat.uid ? "current-user" : "")
-                }
-              >
-                {chat.content}
-                <br />
-                <span className="chat-time float-right">
-                  {this.formatTime(chat.timestamp)}
-                </span>
-              </p>
+              <div className="do">
+                <p
+                  key={chat.timestamp}
+                  className={
+                    "chat-bubble " +
+                    (this.state.user.uid === chat.uid ? "current-user" : "")
+                  }
+                >
+                  {chat.content}
+
+                  <br />
+                  <span className="chat-time float-right">
+                    {this.formatTime(chat.timestamp)}
+                  </span>
+                </p>
+              </div>
             );
           })}
         </div>
+
         <form onSubmit={this.handleSubmit} className="mx-3">
           <textarea
             className="form-control"
@@ -114,9 +119,14 @@ export default class Chat extends Component {
           {this.state.error ? (
             <p className="text-danger">{this.state.error}</p>
           ) : null}
-          <button type="submit" className="btn btn-submit px-5 mt-4">
-            Send
-          </button>
+          {this.state.content ? (
+            <button
+              type="submit"
+              className="btn btn-submit px-5 mt-4 button chat-bubble"
+            >
+              Send
+            </button>
+          ) : null}
         </form>
         <div className="py-5 mx-3">
           Login in as:{" "}

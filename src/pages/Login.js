@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import { signin, signInWithGoogle, signInWithGitHub } from "../helpers/auth";
 import "./signin.css";
+import smile from "../chatting.jpg";
 
 export default class Login extends Component {
   constructor() {
@@ -54,6 +55,8 @@ export default class Login extends Component {
     return (
       <div className="container">
         <Header></Header>
+        <img className="smile" src={smile} alt="smiling" />
+        <br />
         <br />
         <form
           className="mt-5 py-5 px-5"
