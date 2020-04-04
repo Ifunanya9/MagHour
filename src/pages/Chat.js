@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import { auth } from "../services/firebase";
 import { db } from "../services/firebase";
@@ -87,6 +88,8 @@ export default class Chat extends Component {
           )}
           {/* chat area */}
 
+          <Link className="link" to="/delete_post"><h1>...</h1></Link>
+
           {this.state.chats.map(chat => {
             return (
               <div className="do">
@@ -110,22 +113,25 @@ export default class Chat extends Component {
         </div>
 
         <form onSubmit={this.handleSubmit} className="mx-3">
-          <textarea
-            className="form-control"
-            name="content"
-            onChange={this.handleChange}
-            value={this.state.content}
-          ></textarea>
+            <textarea
+              className="form-control"
+              name="content"
+              onChange={this.handleChange}
+              value={this.state.content}
+            >
+            </textarea>
           {this.state.error ? (
             <p className="text-danger">{this.state.error}</p>
           ) : null}
           {this.state.content ? (
+            this.state.content !== " " ? (
             <button
               type="submit"
               className="btn btn-submit px-5 mt-4 button chat-bubble"
             >
               Send
             </button>
+            ):null
           ) : null}
         </form>
         <div className="py-5 mx-3">

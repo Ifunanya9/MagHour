@@ -35,8 +35,17 @@ body {
   background-color: #a5d6a7;
 }
 
+.btn-submit{
+
+}
+
+.link{
+  text-decoration: none;
+}
+
 .form-control {
   width: 60%;
+  margin: center;
 }
 
 .form-control:focus {
