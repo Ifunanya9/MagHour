@@ -35,8 +35,25 @@ body {
   background-color: #a5d6a7;
 }
 
+.btn-submit {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  top: 0%;
+  left: 0%;
+  transform: translate(30%, -60%);
+}
+
 .form-control {
-  width: 60%;
+  width: 50%;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.text {
+  display: block;
+  text-align: center;
 }
 
 .form-control:focus {
