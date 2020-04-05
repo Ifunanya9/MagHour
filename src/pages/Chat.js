@@ -87,6 +87,10 @@ export default class Chat extends Component {
           )}
           {/* chat area */}
 
+          {/* <Link to="/delete_post">
+            <h1>. . .</h1>
+          </Link> */}
+
           {this.state.chats.map(chat => {
             return (
               <div className="do">
