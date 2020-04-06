@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import { auth } from "../services/firebase";
 import { db } from "../services/firebase";
+import {Card} from "react-bootstrap"
+import "./chat.css";
+
+
 
 export default class Chat extends Component {
   constructor(props) {
@@ -66,7 +69,7 @@ export default class Chat extends Component {
 
   formatTime(timestamp) {
     const d = new Date(timestamp);
-    const time = `Made By:${this.state.user.email} 
+    const time = `${this.state.user.email} 
     ${d.getDate()}/${d.getMonth() +
       1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()} `;
     return time;
@@ -74,69 +77,61 @@ export default class Chat extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
         <Header />
         <br />
+        <div className="container">
         <div className="chat-area" ref={this.myRef}>
-          {/* loading indicator */}
           {this.state.loadingChats ? (
             <div className="spinner-border text-success" role="status">
               <span className="sr-only">Loading...</span>
             </div>
           ) : (
             ""
-          )}
-          {/* chat area */}
-
-          <Link className="link" to="/delete_post"><h1>...</h1></Link>
-
+          )};
           {this.state.chats.map(chat => {
             return (
-              <div className="do">
-                <p
-                  key={chat.timestamp}
-                  className={
-                    "chat-bubble " +
-                    (this.state.user.uid === chat.uid ? "current-user" : "")
-                  }
-                >
+              <Card className="chat-bubble" style={{ width: '18rem' }}>
+              <Card.Header>
+                <strong>{this.formatTime(chat.timestamp)}</strong>
+              </Card.Header>
+              <Card.Body>
+                <Card.Text>
                   {chat.content}
-
-                  <br />
-                  <span className="chat-time float-right">
-                    {this.formatTime(chat.timestamp)}
-                  </span>
-                </p>
-              </div>
+                </Card.Text>
+              </Card.Body>
+            </Card>
             );
-          })}
+          })};
         </div>
-
-        <form onSubmit={this.handleSubmit} className="mx-3">
+        <div className="text">
+          <form onSubmit={this.handleSubmit} className="mx-3">
             <textarea
-              className="form-control"
+              className="form-control chat-bubble"
               name="content"
               onChange={this.handleChange}
               value={this.state.content}
-            >
-            </textarea>
-          {this.state.error ? (
-            <p className="text-danger">{this.state.error}</p>
-          ) : null}
-          {this.state.content ? (
-            this.state.content !== " " ? (
-            <button
-              type="submit"
-              className="btn btn-submit px-5 mt-4 button chat-bubble"
-            >
-              Send
-            </button>
-            ):null
-          ) : null}
-        </form>
+            ></textarea>
+
+            {this.state.error ? (
+              <p className="text-danger">{this.state.error}</p>
+            ) : null}
+            {this.state.content ? (
+              this.state.content !== " " ? (
+                <button
+                  type="submit"
+                  className="btn btn-submit px-5 mt-4 button chat-bubble"
+                >
+                  Send
+                </button>
+              ) : null
+            ) : null}
+          </form>
+        </div>
         <div className="py-5 mx-3">
           Login in as:{" "}
           <strong className="text-info">{this.state.user.email}</strong>
+        </div>
         </div>
       </div>
     );

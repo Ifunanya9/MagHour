@@ -53,8 +53,9 @@ export default class Login extends Component {
 
   render() {
     return (
+      <div>
+      <Header/>
       <div className="container">
-        <Header></Header>
         <img className="smile" src={smile} alt="smiling" />
         <br />
         <br />
@@ -128,6 +129,7 @@ export default class Login extends Component {
             </Link>
           </p>
         </form>
+        </div>
       </div>
     );
   }
