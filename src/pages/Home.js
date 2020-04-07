@@ -8,9 +8,9 @@ import "./home.css";
 export default class HomePage extends Component {
   render() {
     return (
-      <div>
+      <div className="large">
       <Header/>
-      <div className="dashboard container">
+      <div className="dashboard start container">
         <div className="row">
           <div className='col s12 m6'>
             {auth().currentUser ? (

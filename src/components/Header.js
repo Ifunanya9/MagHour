@@ -6,8 +6,9 @@ import "./nav.css";
 
 const Header = () => {
   return (
-    <div>
     <header>
+      <div >
+      <div bg="black">
       <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
       <Navbar.Brand href="/">
       <img src={logo} alt="maghour" length="60px" width="60px"/>
@@ -18,16 +19,16 @@ const Header = () => {
           {auth().currentUser ? (
             <Nav className="justify-content-center" activeKey="/home">
               <Nav.Item>
-                <Nav.Link eventKey="/chat">Message</Nav.Link>
+                <Nav.Link href="/chat" eventKey="/chat">Message</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link eventKey="/chat">Class</Nav.Link>
+                <Nav.Link href="/chat" eventKey="/chat">Class</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link eventKey="/chat">School</Nav.Link>
+                <Nav.Link href="/chat" eventKey="/chat">School</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link eventKey="/chat">Profile</Nav.Link>
+                <Nav.Link href="/chat" eventKey="/chat">Profile</Nav.Link>
               </Nav.Item>
               <li>
                 <button
@@ -39,13 +40,13 @@ const Header = () => {
            ) : (
             <Nav className="justify-content-center" activeKey="/home">
               <Nav.Item>
-                <Nav.Link eventKey="/login">Signin</Nav.Link>
+                <Nav.Link href="/login" eventKey="/login">Signin</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link eventKey="/signup">Signup</Nav.Link>
+                <Nav.Link href="/signup" eventKey="/signup">Signup</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link eventKey="/about">About</Nav.Link>
+                <Nav.Link href="/about" eventKey="/about">About</Nav.Link>
               </Nav.Item>
             </Nav>
           )}
@@ -55,8 +56,9 @@ const Header = () => {
             <Button variant="outline-info">Search</Button>
           </Form> */}
       </Navbar>
+      </div>
+      </div>
     </header>
-    </div>
   );
 }
 

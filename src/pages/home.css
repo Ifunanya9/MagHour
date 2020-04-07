@@ -21,3 +21,12 @@
   display: flex;
   justify-content: center;
 }
+
+.start {
+  background-color: cornflowerblue;
+  width: 100%;
+}
+
+.large{
+  width: 100%;
+}
