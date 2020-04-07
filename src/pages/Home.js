@@ -8,26 +8,29 @@ import "./home.css";
 export default class HomePage extends Component {
   render() {
     return (
-      <div className="home">
-        <Header></Header>
-        {auth().currentUser ? (
-          <section>
-            <div className="footer">
-              <div className="jumbotron jumbotron-fluid py-5">
-                <div className="container text-center py-5">
-                  <h1 className="display-4 welcome">Welcome to MagHour</h1>
-                  <br />
-                  <p className="lead">
-                    A great place to share your thoughts with friends
-                  </p>
-                  <br />
-                  <div className="mt-4">
-                    <Link
-                      className="btn btn-primary px-5 mr-3 create"
-                      to="/chat"
-                    >
-                      Chat
-                    </Link>
+      <div className="large">
+      <Header/>
+      <div className="dashboard start container">
+            {auth().currentUser ? (
+              <section>
+              <div className="footer">
+                <div className="jumbotron jumbotron-fluid py-5">
+                  <div className="container text-center py-5">
+                    
+                    <h1 className="display-4 welcome">Welcome to MagHour</h1>
+                    <br />
+                    <p className="lead">
+                      A great place to share your thoughts with friends
+                    </p>
+                    <br />
+                    <div className="mt-4">
+                      <Link
+                        className="btn btn-primary px-5 mr-3 create"
+                        to="/chat"
+                      >
+                        Chat
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -35,7 +38,6 @@ export default class HomePage extends Component {
               <div className="foot">
                 <Footer></Footer>
               </div>
-            </div>
           </section>
         ) : (
           <section>
@@ -62,14 +64,11 @@ export default class HomePage extends Component {
                   </div>
                 </div>
               </div>
-              <br />
-              <div className="foot">
-                <Footer></Footer>
-              </div>
             </div>
           </section>
-        )}
+            )}
       </div>
+      </div>     
     );
   }
 }

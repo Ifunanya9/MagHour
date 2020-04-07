@@ -21,3 +21,16 @@
   display: flex;
   justify-content: center;
 }
+
+/* .start {
+  background-color: cornflowerblue;
+  width: 100%;
+} */
+
+.dashboard{
+  width: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}

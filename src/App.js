@@ -17,6 +17,7 @@ import "./styles.css";
 
 function PrivateRoute({ component: Component, authenticated, ...rest }) {
   return (
+    
     <Route
       {...rest}
       render={props =>
@@ -79,29 +80,32 @@ class App extends Component {
         <span className="sr-only">Loading...</span>
       </div>
     ) : (
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Home} />
+      <div className="center">
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Home} />
 
-          <PrivateRoute
-            path="/chat"
-            authenticated={this.state.authenticated}
-            component={Chat}
-          />
-          <PublicRoute
-            path="/signup"
-            authenticated={this.state.authenticated}
-            component={Signup}
-          />
-          <PublicRoute
-            path="/login"
-            authenticated={this.state.authenticated}
-            component={Login}
-          />
-          <Route path="/about" component={About} />
-        </Switch>
-      </Router>
+            <PrivateRoute
+              path="/chat"
+              authenticated={this.state.authenticated}
+              component={Chat}
+            />
+            <PublicRoute
+              path="/signup"
+              authenticated={this.state.authenticated}
+              component={Signup}
+            />
+            <PublicRoute
+              path="/login"
+              authenticated={this.state.authenticated}
+              component={Login}
+            />
+            <Route path="/about" component={About} />
+          </Switch>
+        </Router>
+      </div>
     );
+    
   }
 }
 
