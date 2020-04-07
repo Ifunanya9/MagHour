@@ -6,12 +6,14 @@ import {
   Redirect
 } from "react-router-dom";
 import Home from "./pages/Home";
-import Chat from "./pages/Chat";
+import Chat from "./pages/ChatClass";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import About from "./pages/About";
 import { auth } from "./services/firebase";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./styles.css";
+// import 'materialize-css';
 
 function PrivateRoute({ component: Component, authenticated, ...rest }) {
   return (

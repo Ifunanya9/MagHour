@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import Header from "../components/Header";
 import { auth } from "../services/firebase";
 import { db } from "../services/firebase";
+import {Card} from "react-bootstrap"
+import "./chat.css";
+
+
 
 export default class Chat extends Component {
   constructor(props) {
@@ -11,11 +15,13 @@ export default class Chat extends Component {
       chats: [],
       content: "",
       readError: null,
+      // uid: null,
       writeError: null,
       loadingChats: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.getUid = this.getUid.bind(this);
     this.myRef = React.createRef();
   }
 
@@ -54,7 +60,8 @@ export default class Chat extends Component {
       await db.ref("chats").push({
         content: this.state.content,
         timestamp: Date.now(),
-        uid: this.state.user.uid
+        uid: this.state.user.uid,
+        chatBy: this.state.user.email
       });
       this.setState({ content: "" });
       chatArea.scrollBy(0, chatArea.scrollHeight);
@@ -63,9 +70,13 @@ export default class Chat extends Component {
     }
   }
 
+  // getUid(userid){
+  //   this.setState({uid: userid});
+  // }
+
   formatTime(timestamp) {
     const d = new Date(timestamp);
-    const time = `Made By:${this.state.user.email} 
+    const time = `
     ${d.getDate()}/${d.getMonth() +
       1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()} `;
     return time;
@@ -73,11 +84,11 @@ export default class Chat extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
         <Header />
         <br />
+        <div className="container">
         <div className="chat-area" ref={this.myRef}>
-          {/* loading indicator */}
           {this.state.loadingChats ? (
             <div className="spinner-border text-success" role="status">
               <span className="sr-only">Loading...</span>
@@ -85,40 +96,33 @@ export default class Chat extends Component {
           ) : (
             ""
           )}
-          {/* chat area */}
-
-          {/* <Link to="/delete_post">
-            <h1>. . .</h1>
-          </Link> */}
-
           {this.state.chats.map(chat => {
+            console.log(chat.chatBy)
             return (
-              <div className="do">
-                <p
-                  key={chat.timestamp}
-                  className={
-                    "chat-bubble " +
-                    (this.state.user.uid === chat.uid ? "current-user" : "")
-                  }
-                >
+              <Card className={"chat-bubble " + (this.state.user.uid === chat.uid ? "current-user" : "")}>
+              <Card.Header >
+                <strong>{chat.chatBy}</strong>
+              <br/>
+                <strong>{this.formatTime(chat.timestamp)}</strong>
+              </Card.Header>
+              <Card.Body>
+                <Card.Text>
                   {chat.content}
-
-                  <br />
-                  <span className="chat-time float-right">
-                    {this.formatTime(chat.timestamp)}
-                  </span>
-                </p>
-              </div>
-            );
+                </Card.Text>
+              </Card.Body>
+            </Card>
+            )
           })}
         </div>
         <div className="text">
+          <label htmlFor="text">Chat Here!</label>
           <form onSubmit={this.handleSubmit} className="mx-3">
             <textarea
-              className="form-control chat-bubble"
+              className="form-control chat-bubble chat-form"
               name="content"
               onChange={this.handleChange}
               value={this.state.content}
+              id="text"
             ></textarea>
 
             {this.state.error ? (
@@ -136,9 +140,10 @@ export default class Chat extends Component {
             ) : null}
           </form>
         </div>
-        <div className="py-5 mx-3">
+        <div className="py-5 mx-3 text">
           Login in as:{" "}
           <strong className="text-info">{this.state.user.email}</strong>
+        </div>
         </div>
       </div>
     );

@@ -1,12 +1,11 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: #fcfcfc;
 }
 
-.chat-area,
-.home {
+.chat-area, .home {
   margin-top: 60px;
 }
 
@@ -35,25 +34,8 @@ body {
   background-color: #a5d6a7;
 }
 
-.btn-submit {
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-  top: 0%;
-  left: 0%;
-  transform: translate(30%, -60%);
-}
-
 .form-control {
-  width: 50%;
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.text {
-  display: block;
-  text-align: center;
+  width: 60%;
 }
 
 .form-control:focus {
