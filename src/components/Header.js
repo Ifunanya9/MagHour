@@ -8,15 +8,15 @@ const Header = () => {
   return (
     <div>
     <header>
-      <Navbar bg="dark" fill variant="dark" expand="lg" fixed="top">
-      <Navbar.Brand href="#home">
+      <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
+      <Navbar.Brand href="/">
       <img src={logo} alt="maghour" length="60px" width="60px"/>
         MagHour
       </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
+      <Navbar.Toggle aria-controls="basic-navbar-nav" bg="dark" variant="dark"/>
+      <Navbar.Collapse id="basic-navbar-nav" >
           {auth().currentUser ? (
-            <Nav className="justify-content-end" activeKey="/home">
+            <Nav className="justify-content-center" activeKey="/home">
               <Nav.Item>
                 <Nav.Link eventKey="/chat">Message</Nav.Link>
               </Nav.Item>
@@ -37,9 +37,9 @@ const Header = () => {
               </li>
             </Nav>
            ) : (
-            <Nav className="justify-content-end" activeKey="/home">
+            <Nav className="justify-content-center" activeKey="/home">
               <Nav.Item>
-                <Nav.Link eventKey="/signin">Signin</Nav.Link>
+                <Nav.Link eventKey="/login">Signin</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="/signup">Signup</Nav.Link>
@@ -50,6 +50,10 @@ const Header = () => {
             </Nav>
           )}
        </Navbar.Collapse>
+          {/* <Form inline>
+            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+            <Button variant="outline-info">Search</Button>
+          </Form> */}
       </Navbar>
     </header>
     </div>

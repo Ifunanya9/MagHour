@@ -15,11 +15,13 @@ export default class Chat extends Component {
       chats: [],
       content: "",
       readError: null,
+      // uid: null,
       writeError: null,
       loadingChats: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.getUid = this.getUid.bind(this);
     this.myRef = React.createRef();
   }
 
@@ -58,7 +60,8 @@ export default class Chat extends Component {
       await db.ref("chats").push({
         content: this.state.content,
         timestamp: Date.now(),
-        uid: this.state.user.uid
+        uid: this.state.user.uid,
+        chatBy: this.state.user.email
       });
       this.setState({ content: "" });
       chatArea.scrollBy(0, chatArea.scrollHeight);
@@ -67,9 +70,13 @@ export default class Chat extends Component {
     }
   }
 
+  // getUid(userid){
+  //   this.setState({uid: userid});
+  // }
+
   formatTime(timestamp) {
     const d = new Date(timestamp);
-    const time = `${this.state.user.email} 
+    const time = `
     ${d.getDate()}/${d.getMonth() +
       1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()} `;
     return time;
@@ -88,11 +95,14 @@ export default class Chat extends Component {
             </div>
           ) : (
             ""
-          )};
+          )}
           {this.state.chats.map(chat => {
+            console.log(chat.chatBy)
             return (
-              <Card className="chat-bubble" style={{ width: '18rem' }}>
-              <Card.Header>
+              <Card className={"chat-bubble " + (this.state.user.uid === chat.uid ? "current-user" : "")} style={{ width: '18rem' }}>
+              <Card.Header >
+                <strong>{chat.chatBy}</strong>
+              <br/>
                 <strong>{this.formatTime(chat.timestamp)}</strong>
               </Card.Header>
               <Card.Body>
@@ -101,16 +111,18 @@ export default class Chat extends Component {
                 </Card.Text>
               </Card.Body>
             </Card>
-            );
-          })};
+            )
+          })}
         </div>
         <div className="text">
+          <label htmlFor="text">Chat Here!</label>
           <form onSubmit={this.handleSubmit} className="mx-3">
             <textarea
-              className="form-control chat-bubble"
+              className="form-control chat-bubble chat-form"
               name="content"
               onChange={this.handleChange}
               value={this.state.content}
+              id="text"
             ></textarea>
 
             {this.state.error ? (
@@ -128,7 +140,7 @@ export default class Chat extends Component {
             ) : null}
           </form>
         </div>
-        <div className="py-5 mx-3">
+        <div className="py-5 mx-3 text">
           Login in as:{" "}
           <strong className="text-info">{this.state.user.email}</strong>
         </div>
