@@ -37,7 +37,8 @@ body {
   background-color: #fcfcfc;
 }
 
-.chat-area, .home {
+.chat-area,
+.home {
   margin-top: 60px;
 }
 
@@ -47,7 +48,8 @@ body {
   overflow-y: scroll;
 }
 
-.chat-area .chat-bubble {
+.chat-area
+.chat-bubble {
   background-color: #bbdefb;
   padding: 20px;
   border-radius: 4px;
@@ -55,13 +57,16 @@ body {
   word-wrap: break-word;
 }
 
-.chat-bubble .chat-time {
+.chat-bubble
+.chat-time {
   font-size: 12px;
   color: #757575;
   text-align: right;
 }
 
-.chat-area .chat-bubble.current-user {
+.chat-area
+.chat-bubble
+.current-user {
   margin-left: auto;
   background-color: #a5d6a7;
 }
@@ -89,7 +94,8 @@ body {
     width: 100%;
   }
 
-  .chat-area .chat-bubble {
+  .chat-area
+  .chat-bubble {
     max-width: 250px;
   }
 }
