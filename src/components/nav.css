@@ -45,3 +45,13 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+
+
+@media screen and (max-width: 767px) {
+  .hi{
+    background-color: #696969;
+    align-items: center;
+    width: 20%;
+  }
+}

@@ -11,8 +11,6 @@ export default class HomePage extends Component {
       <div className="large">
       <Header/>
       <div className="dashboard start container">
-        <div className="row">
-          <div className='col s12 m6'>
             {auth().currentUser ? (
               <section>
               <div className="footer">
@@ -75,12 +73,7 @@ export default class HomePage extends Component {
               </section>
             )}
           </div>
-          <div className="col s12 m5 offset-m1">
-            <h1>Notifications</h1>
-          </div>
         </div>
-      </div>
-      </div>
     );
   }
 }

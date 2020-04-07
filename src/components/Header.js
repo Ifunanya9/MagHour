@@ -6,7 +6,7 @@ import "./nav.css";
 
 const Header = () => {
   return (
-    <header>
+    <header className="long high">
       <div >
       <div bg="black">
       <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
@@ -17,7 +17,7 @@ const Header = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" bg="dark" variant="dark"/>
       <Navbar.Collapse id="basic-navbar-nav" >
           {auth().currentUser ? (
-            <Nav className="justify-content-center" activeKey="/home">
+            <Nav className="justify-content-center hi" activeKey="/home">
               <Nav.Item>
                 <Nav.Link href="/chat" eventKey="/chat">Message</Nav.Link>
               </Nav.Item>
@@ -38,7 +38,7 @@ const Header = () => {
               </li>
             </Nav>
            ) : (
-            <Nav className="justify-content-center" activeKey="/home">
+            <Nav className="justify-content-center hi" activeKey="/home">
               <Nav.Item>
                 <Nav.Link href="/login" eventKey="/login">Signin</Nav.Link>
               </Nav.Item>
@@ -55,7 +55,9 @@ const Header = () => {
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />
             <Button variant="outline-info">Search</Button>
           </Form> */}
+          
       </Navbar>
+      
       </div>
       </div>
     </header>
