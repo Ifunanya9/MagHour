@@ -99,7 +99,7 @@ export default class Chat extends Component {
           {this.state.chats.map(chat => {
             console.log(chat.chatBy)
             return (
-              <Card className={"chat-bubble " + (this.state.user.uid === chat.uid ? "current-user" : "")}>
+              <Card className={"chat-bubble text-center " + (this.state.user.uid === chat.uid ? "current-user" : "")}>
               <Card.Header >
                 <strong>{chat.chatBy}</strong>
               <br/>
@@ -109,6 +109,9 @@ export default class Chat extends Component {
                 <Card.Text>
                   {chat.content}
                 </Card.Text>
+                {/* <Card.Footer>
+                  <button onclick="confirmation()">Delete</button>
+                </Card.Footer> */}
               </Card.Body>
             </Card>
             )

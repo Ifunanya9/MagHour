@@ -13,6 +13,9 @@ import About from "./pages/About";
 import { auth } from "./services/firebase";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./styles.css";
+import InfoChildren from "./pages/InfoChildren";
+import InfoParents from "./pages/InfoParents";
+import InfoSchool from "./pages/InfoSchool";
 // import 'materialize-css';
 
 function PrivateRoute({ component: Component, authenticated, ...rest }) {
@@ -101,6 +104,9 @@ class App extends Component {
               component={Login}
             />
             <Route path="/about" component={About} />
+            <Route path="/info-for-chidren" component={InfoChildren} />
+            <Route path="/info-for-parents" component={InfoParents} />
+            <Route path="/info-for-schools" component={InfoSchool} />
           </Switch>
         </Router>
       </div>

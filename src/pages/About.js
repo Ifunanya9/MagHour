@@ -15,31 +15,31 @@ export default class About extends Component {
               <div className="container text-center py-5">
                 <br />
                 <h5>
-                  <Link
-                    className="btn btn-primary px-5 mr-3 create"
-                    to="/signup"
-                  >
-                    Imformation for schools
-                  </Link>
-                  <br />
-                  <Link
-                    className="btn btn-primary px-5 mr-3 create"
-                    to="/signup"
-                  >
-                    Imformation for parents
-                  </Link>
-                  <br />
-                  <Link
-                    className="btn btn-primary px-5 mr-3 create"
-                    to="/signup"
-                  >
-                    Imformation for Children
-                  </Link>
-                </h5>
-                <h1 className="display-4 welcome">about</h1>
+                <h1 className="display-4 welcome">About</h1>
                 <p className="lead">
                   A great place to share your thoughts with friends
                 </p>
+                  <Link
+                    className="btn btn-primary px-5 mr-3 create"
+                    to="/info-for-schools"
+                  >
+                    Information for Schools
+                  </Link>
+                  <br />
+                  <Link
+                    className="btn btn-primary px-5 mr-3 create"
+                    to="/info-for-parents"
+                  >
+                    Information for Parents
+                  </Link>
+                  <br />
+                  <Link
+                    className="btn btn-primary px-5 mr-3 create"
+                    to="/info-for-chidren"
+                  >
+                    Information for Children
+                  </Link>
+                </h5>
                 <br />
                 {/* <div className="mt-4">
                   <Link

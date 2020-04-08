@@ -1,8 +1,8 @@
-import React from 'react'
-import { Link } from'../pages/DeletePost';
-import { Link } from'../pages/CreatePost';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
-function Profile() {
+export default class Profile extends Component {
+    render(){
     return (
         <div>
             <Link to="DeletePost">Delete sPost</Link>
@@ -10,5 +10,6 @@ function Profile() {
             <p>Its time for Profile</p>
         </div>
     )
+}
 }
 

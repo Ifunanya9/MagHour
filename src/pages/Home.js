@@ -4,17 +4,19 @@ import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import { auth } from "../services/firebase";
 import "./home.css";
+import smile from "../chatting.jpg";
 
 export default class HomePage extends Component {
   render() {
     return (
       <div className="large">
       <Header/>
+      <img className="smile" src={smile} alt="smiling" />
       <div className="dashboard start container">
             {auth().currentUser ? (
               <section>
-              <div className="footer">
-                <div className="jumbotron jumbotron-fluid py-5">
+              <div className="form-group">
+                <div className="jumbotron-fluid py-5">
                   <div className="container text-center py-5">
                     
                     <h1 className="display-4 welcome">Welcome to MagHour</h1>
@@ -58,7 +60,7 @@ export default class HomePage extends Component {
                       Create New Account
                     </Link>
 
-                    <Link className="btn px-5 log" to="/login">
+                    <Link className="btn btn-secondary px-5 log" to="/login">
                       Login to Your Account
                     </Link>
                   </div>

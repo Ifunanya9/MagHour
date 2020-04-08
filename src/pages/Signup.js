@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import { signup, signInWithGoogle, signInWithGitHub } from "../helpers/auth";
 import "./signin.css";
-import smile from "../chatting.jpg";
+import smile from "../maghour.png";
 
 export default class SignUp extends Component {
   constructor() {
@@ -58,8 +58,9 @@ export default class SignUp extends Component {
       <Header/>
       <div className="container">
         <img className="smile" src={smile} alt="smiling" />
-        <br />
-        <br />
+        <div className="form-group">
+          <div className="jumbotron-fluid py-5">
+            <div className="container text-center py-5">
         <form className="mt-5 py-5 px-5" onSubmit={this.handleSubmit}>
           <h1>
             <div className="title-text">Sign Up to </div>
@@ -126,6 +127,9 @@ export default class SignUp extends Component {
             </Link>
           </p>
         </form>
+      </div>
+      </div>
+      </div>
       </div>
       </div>
     );
