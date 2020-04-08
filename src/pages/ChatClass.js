@@ -129,7 +129,7 @@ export default class Chat extends Component {
               <p className="text-danger">{this.state.error}</p>
             ) : null}
             {this.state.content ? (
-              this.state.content !== " " ? (
+              this.state.content !== " " ?(
                 <button
                   type="submit"
                   className="btn btn-submit px-5 mt-4 button chat-bubble"
