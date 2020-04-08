@@ -46,3 +46,7 @@
   top: 0;
   z-index: -3;
 }
+
+.form-control {
+  text-align: center;
+}
