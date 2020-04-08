@@ -16,56 +16,55 @@ export default class About extends Component {
 
         <div className="dashboard start container">
           <section>
-            <div className="footer">
-              <div className="jumbotron-fluid py-5">
-                <div className="container text-center py-5">
+            <div className="jumbotron-fluid py-5">
+              <div className="container text-center py-5">
+                <br />
+                <h5>
+                  <h1 className="display-4 welcome">About</h1>
+                  <p className="lead">
+                    A great place to share your thoughts with friends
+                  </p>
+                  <Link
+                    className="btn btn-primary px-5 mr-3 create"
+                    to="/info-for-schools"
+                  >
+                    Information for Schools
+                  </Link>
                   <br />
-                  <h5>
-                    <h1 className="display-4 welcome">About</h1>
-                    <p className="lead">
-                      A great place to share your thoughts with friends
-                    </p>
-                    <Link
-                      className="btn btn-primary px-5 mr-3 create"
-                      to="/info-for-schools"
-                    >
-                      Information for Schools
-                    </Link>
-                    <br />
-                    <Link
-                      className="btn btn-primary px-5 mr-3 create"
-                      to="/info-for-parents"
-                    >
-                      Information for Parents
-                    </Link>
-                    <br />
-                    <Link
-                      className="btn btn-primary px-5 mr-3 create"
-                      to="/info-for-chidren"
-                    >
-                      Information for Children
-                    </Link>
-                  </h5>
+                  <Link
+                    className="btn btn-primary px-5 mr-3 create"
+                    to="/info-for-parents"
+                  >
+                    Information for Parents
+                  </Link>
                   <br />
+                  <Link
+                    className="btn btn-primary px-5 mr-3 create"
+                    to="/info-for-chidren"
+                  >
+                    Information for Children
+                  </Link>
+                </h5>
+                <br />
+                <br />
+                <br />
+                <h3>Who made it</h3>
+                <div className="space">
+                  <img className="together" src={boy} alt="smiling" />
+                  <img className="together" src={girl} alt="smiling" />
                   <br />
-                  <br />
-                  <h3>Who made it</h3>
-                  <div className="space">
-                    <img className="together" src={boy} alt="smiling" />
-                    <img className="together" src={girl} alt="smiling" />
-                    <br />
-                    <Link className="px-5 mr-3 profile" to="/info-for-parents">
-                      Chikamso
-                    </Link>
-                    <Link className="px-5 mr-3 profile" to="/info-for-parents">
-                      Ifunanyachi
-                    </Link>
-                  </div>
-                  <br />
-                  <br />
-                  <br />
-                  <h3>About the website</h3>
-                  {/* <div className="mt-4">
+                  <Link className="px-5 mr-3 profile" to="/info-for-parents">
+                    Chikamso
+                  </Link>
+                  <Link className="px-5 mr-3 profile" to="/about-ifunanyachi">
+                    Ifunanyachi
+                  </Link>
+                </div>
+                <br />
+                <br />
+                <br />
+                <h3>About the website</h3>
+                {/* <div className="mt-4">
                   <Link
                     className="btn btn-primary px-5 mr-3 create"
                     to="/signup"
@@ -77,12 +76,11 @@ export default class About extends Component {
                     Login to Your Account
                   </Link>
                 </div> */}
-                </div>
               </div>
-              <br />
-              <div className="foot">
-                <Footer></Footer>
-              </div>
+            </div>
+            <br />
+            <div className="foot">
+              <Footer></Footer>
             </div>
           </section>
         </div>
