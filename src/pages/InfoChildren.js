@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Header from "../components/Header";
-import smile from "./boy.jpg";
+import smile from "../images.png";
 import "./home.css";
 
 export default class SignUp extends Component {
