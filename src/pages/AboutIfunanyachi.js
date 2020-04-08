@@ -17,7 +17,7 @@ export default class AboutIfunanyachi extends Component {
               <div className="container text-center py-5">
                 <img className="together" src={girl} alt="smiling" />
                 <br />
-                <h2 className="display-4 welcome">About Ifunanyachi</h2>
+                <h2 className="welcome">About Ifunanyachi</h2>
                 <h3>Bacic Information</h3>
                 <p className="lead">
                   I am 10 years old

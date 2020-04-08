@@ -1,12 +1,56 @@
-import React from 'react'
+import React, { Component } from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import boy from "../chikamso.jpg";
+import "./home.css";
 
-function AboutChikamso() {
+export default class AboutChikamso extends Component {
+  render() {
     return (
-        <div>
-            <h1>About Chikamso</h1>
-            <p>Hi I am one of the creators of MagHour and I am going to tell you why we created MagHour<br/>We created Maghour because about coronavirus and we know that not everybody has a phone which they can use whatsapp like us so we decided to create MagHour<br/>I like doing coding sports until my leg hurted and I couldn't kick a ball or bend my leg. Ouch! The only things I don't like doing are learning languages and writing.<br/>Me and my sister all like doing similar things like coding, maths and sports and two of us don't like doing writing but the only thing that makes us not similar is that she likes learning languages but I don't.<br/>By the way I am in P5A and I am 9 years old so don't think I am in P7 because I've made this website because I'm not.<br/>I know what it feels like in your house not talking to anyone especially if you are the only one in your house and you don't have a phone.<br/>The reason why we don't just want to give it to you children is because you can use your own email for the signup so that's why we send it to your school and your school will probaly have all the parents email so that's why they will create your account and send your parents the password nd username so you can login.</p>       
+      <div className="home">
+        <Header></Header>
+        <div className="dashboard start container">
+          <section>
+            {/*<div className="footer">*/}
+            <div className="jumbotron-fluid py-5">
+              <div className="container text-center py-5">
+                <img className="together" src={boy} alt="smiling" />
+                <h2 className="welcome">About Chikamso</h2>
+                <br />
+                <h3>Bacic Stuff</h3>
+                <p className="lead">
+                  I am in P5A and I am 9 years old <br />I live in Balerno.
+                  <br />
+                  I have a family of 6.
+                  <br />
+                  Both my parents are Engineers.
+                  <br />
+                  I have full access to internet and
+                  <br />
+                  I have my own laptop
+                  <br />
+                </p>
+                <h3>Hobbies</h3>
+                <p>
+                  I like doing coding
+                  <br /> and sports but right now my leg hurts and I can't kick
+                  a ball. Ouch!
+                  <br /> I also like doing Maths,
+                  <br />
+                  Swimming,
+                  <br />
+                  Guitar
+                  <br />
+                  and Piano
+                </p>
+                <h3>Things I don't like</h3>
+                <p>I don't like doing writing and learning languages</p>
+              </div>
             </div>
-    )
+          </section>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 }
-
-export default AboutChikamso

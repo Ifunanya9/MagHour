@@ -17,6 +17,7 @@ import InfoChildren from "./pages/InfoChildren";
 import InfoParents from "./pages/InfoParents";
 import InfoSchool from "./pages/InfoSchool";
 import AboutIfunanyachi from "./pages/AboutIfunanyachi";
+import AboutChikamso from "./pages/AboutChikamso";
 // import 'materialize-css';
 
 function PrivateRoute({ component: Component, authenticated, ...rest }) {
@@ -108,6 +109,7 @@ class App extends Component {
             <Route path="/info-for-parents" component={InfoParents} />
             <Route path="/info-for-schools" component={InfoSchool} />
             <Route path="/about-ifunanyachi" component={AboutIfunanyachi} />
+            <Route path="/about-chikamso" component={AboutChikamso} />
           </Switch>
         </Router>
       </div>

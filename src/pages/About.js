@@ -53,7 +53,7 @@ export default class About extends Component {
                   <img className="together" src={boy} alt="smiling" />
                   <img className="together" src={girl} alt="smiling" />
                   <br />
-                  <Link className="px-5 mr-3 profile" to="/info-for-parents">
+                  <Link className="px-5 mr-3 profile" to="/about-chikamso">
                     Chikamso
                   </Link>
                   <Link className="px-5 mr-3 profile" to="/about-ifunanyachi">
@@ -85,6 +85,7 @@ export default class About extends Component {
           </section>
         </div>
       </div>
+      // Hi I am one of the creators of MagHour and I am going to tell you why we created MagHour<br/>We created Maghour because about coronavirus and we know that not everybody has a phone which they can use whatsapp like us so we decided to create MagHour
     );
   }
 }
