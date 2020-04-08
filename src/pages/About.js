@@ -3,6 +3,8 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import smile from "../chatting.jpg";
+import boy from "../chikamso.jpg";
+import girl from "../ifunanyachi.jpg";
 import "./home.css";
 
 export default class About extends Component {
@@ -11,6 +13,7 @@ export default class About extends Component {
       <div className="home">
         <Header></Header>
         <img className="smile" src={smile} alt="smiling" />
+
         <div className="dashboard start container">
           <section>
             <div className="footer">
@@ -44,6 +47,24 @@ export default class About extends Component {
                     </Link>
                   </h5>
                   <br />
+                  <br />
+                  <br />
+                  <h3>Who made it</h3>
+                  <div className="space">
+                    <img className="together" src={boy} alt="smiling" />
+                    <img className="together" src={girl} alt="smiling" />
+                    <br />
+                    <Link className="px-5 mr-3 profile" to="/info-for-parents">
+                      Chikamso
+                    </Link>
+                    <Link className="px-5 mr-3 profile" to="/info-for-parents">
+                      Ifunanyachi
+                    </Link>
+                  </div>
+                  <br />
+                  <br />
+                  <br />
+                  <h3>About the website</h3>
                   {/* <div className="mt-4">
                   <Link
                     className="btn btn-primary px-5 mr-3 create"

@@ -38,10 +38,28 @@
   width: 100%;
 } */
 
-.dashboard{
+.dashboard {
   width: 100%;
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
+}
+
+.together {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+}
+
+.space {
+  height: 200px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.profile {
+  color: black;
+  font-size: medium;
 }
