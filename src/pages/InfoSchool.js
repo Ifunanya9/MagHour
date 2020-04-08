@@ -8,16 +8,16 @@ export default class InfoSchool extends Component {
     return (
       <div>
         <Header />
+        <br />
+        <br />
+        <br />
         <img className="smile" src={smile} alt="smiling" />
-        <br />
-        <br />
-        <br />
         <h1>Information for Schools</h1>
         <p>
           We create a account for the school.
           <br />
           After the school gets the account then they create a account for the
-          childrens with their parents account
+          childrens with their parents account.
           <br />
           Also the school doesn't have to worry because this website is secure.
           <br />

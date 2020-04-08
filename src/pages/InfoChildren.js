@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Header from "../components/Header";
+import smile from "./boy.jpg";
 import "./home.css";
-import smile from "../images.png";
 
 export default class SignUp extends Component {
   render() {
@@ -13,6 +13,15 @@ export default class SignUp extends Component {
         <br />
         <br />
         <h1>Information for Children</h1>
+        <p>
+          Children you can chat, make private and do anything but say bad words
+          <br />
+          You can chat to your teacher and friends and you can do anything you
+          want except from being mean.
+          <br />
+          And we're not going to a allow people swearing,people being mean
+          racism <br />
+        </p>
       </div>
     );
   }

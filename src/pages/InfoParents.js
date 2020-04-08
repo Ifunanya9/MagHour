@@ -8,10 +8,10 @@ export default class InfoParents extends Component {
     return (
       <div>
         <Header />
+        <br />
+        <br />
+        <br />
         <img className="smile" src={smile} alt="smiling" />
-        <br />
-        <br />
-        <br />
         <h1>Information for Parents</h1>
         <p>
           Also if they're saying bad words or mean words we will send a email to
