@@ -48,7 +48,7 @@ body{
 
 
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 990px) {
   .hi{
     background-color: #2F4F4F;
     /* background-color: rgb(68, 66, 66); */
