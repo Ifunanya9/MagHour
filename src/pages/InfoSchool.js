@@ -23,6 +23,8 @@ export default class InfoSchool extends Component {
           <br />
           Also the teachers can also chat with each other so it's not only the
           childrens that can chat to each other.
+          <br/>
+          The childrens have limited time that is 1 hour so that they can still do homework or get crafty because everyone knows that if you have to mny of screen time your eyes will hurt so much so we limited anyone that goes on the website 1 hour because we don't want any damaging eyes thanks to us and we just want people to get crafty and also to do homework.
         </p>
       </div>
     );
