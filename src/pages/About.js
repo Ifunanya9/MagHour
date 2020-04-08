@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
+import smile from "../chatting.jpg";
 import "./home.css";
 
 export default class About extends Component {
@@ -9,39 +10,41 @@ export default class About extends Component {
     return (
       <div className="home">
         <Header></Header>
-        <section>
-          <div className="footer">
-            <div className="jumbotron jumbotron-fluid py-5">
-              <div className="container text-center py-5">
-                <br />
-                <h5>
-                <h1 className="display-4 welcome">About</h1>
-                <p className="lead">
-                  A great place to share your thoughts with friends
-                </p>
-                  <Link
-                    className="btn btn-primary px-5 mr-3 create"
-                    to="/info-for-schools"
-                  >
-                    Information for Schools
-                  </Link>
+        <img className="smile" src={smile} alt="smiling" />
+        <div className="dashboard start container">
+          <section>
+            <div className="footer">
+              <div className="jumbotron-fluid py-5">
+                <div className="container text-center py-5">
                   <br />
-                  <Link
-                    className="btn btn-primary px-5 mr-3 create"
-                    to="/info-for-parents"
-                  >
-                    Information for Parents
-                  </Link>
+                  <h5>
+                    <h1 className="display-4 welcome">About</h1>
+                    <p className="lead">
+                      A great place to share your thoughts with friends
+                    </p>
+                    <Link
+                      className="btn btn-primary px-5 mr-3 create"
+                      to="/info-for-schools"
+                    >
+                      Information for Schools
+                    </Link>
+                    <br />
+                    <Link
+                      className="btn btn-primary px-5 mr-3 create"
+                      to="/info-for-parents"
+                    >
+                      Information for Parents
+                    </Link>
+                    <br />
+                    <Link
+                      className="btn btn-primary px-5 mr-3 create"
+                      to="/info-for-chidren"
+                    >
+                      Information for Children
+                    </Link>
+                  </h5>
                   <br />
-                  <Link
-                    className="btn btn-primary px-5 mr-3 create"
-                    to="/info-for-chidren"
-                  >
-                    Information for Children
-                  </Link>
-                </h5>
-                <br />
-                {/* <div className="mt-4">
+                  {/* <div className="mt-4">
                   <Link
                     className="btn btn-primary px-5 mr-3 create"
                     to="/signup"
@@ -53,14 +56,15 @@ export default class About extends Component {
                     Login to Your Account
                   </Link>
                 </div> */}
+                </div>
+              </div>
+              <br />
+              <div className="foot">
+                <Footer></Footer>
               </div>
             </div>
-            <br />
-            <div className="foot">
-              <Footer></Footer>
-            </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
     );
   }

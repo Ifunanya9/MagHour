@@ -11,7 +11,7 @@ export default class SignUp extends Component {
     this.state = {
       error: null,
       email: "",
-      password: ""
+      password: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,7 +21,7 @@ export default class SignUp extends Component {
 
   handleChange(event) {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   }
 
@@ -55,82 +55,87 @@ export default class SignUp extends Component {
   render() {
     return (
       <div>
-      <Header/>
-      <div className="container">
+        <Header />
         <img className="smile" src={smile} alt="smiling" />
-        <div className="form-group">
-          <div className="jumbotron-fluid py-5">
-            <div className="container text-center py-5">
-        <form className="mt-5 py-5 px-5" onSubmit={this.handleSubmit}>
-          <h1>
-            <div className="title-text">Sign Up to </div>
-            <Link className="title ml-2" to="/">
-              MagHour
-            </Link>
-          </h1>
-          <p className="lead">Fill in the form below to create an account.</p>
+        <div className="container">
           <div className="form-group">
-            <input
-              className="form-control"
-              placeholder="Email"
-              name="email"
-              type="email"
-              onChange={this.handleChange}
-              value={this.state.email}
-            ></input>
-          </div>
-          <div className="form-group">
-            <input
-              className="form-control"
-              placeholder="Password"
-              name="password"
-              onChange={this.handleChange}
-              value={this.state.password}
-              type="password"
-            ></input>
-          </div>
+            <div className="jumbotron-fluid py-5">
+              <div className="container text-center py-5">
+                <form
+                  className="mt-5 py-5 px-5 up"
+                  onSubmit={this.handleSubmit}
+                >
+                  <h1>
+                    <div className="title-text">Sign Up to </div>
+                    <Link className="title ml-2" to="/">
+                      MagHour
+                    </Link>
+                  </h1>
+                  <p className="lead">
+                    Fill in the form below to create an account.
+                  </p>
+                  <div className="form-group">
+                    <input
+                      className="form-control"
+                      placeholder="Email"
+                      name="email"
+                      type="email"
+                      onChange={this.handleChange}
+                      value={this.state.email}
+                    ></input>
+                  </div>
+                  <div className="form-group">
+                    <input
+                      className="form-control"
+                      placeholder="Password"
+                      name="password"
+                      onChange={this.handleChange}
+                      value={this.state.password}
+                      type="password"
+                    ></input>
+                  </div>
 
-          <div className="form-group">
-            {this.state.error ? (
-              <p className="text-danger">{this.state.error}</p>
-            ) : null}
-            <button className="btn btn-primary px-5" type="submit">
-              Sign up
-            </button>
+                  <div className="form-group">
+                    {this.state.error ? (
+                      <p className="text-danger">{this.state.error}</p>
+                    ) : null}
+                    <button className="btn btn-primary px-5" type="submit">
+                      Sign up
+                    </button>
+                  </div>
+                  <p className="also">
+                    You can also sign up with any of these services
+                  </p>
+                  <div className="another-google">
+                    <button
+                      className="btn btn-danger mr-2 google"
+                      type="button"
+                      onClick={this.googleSignIn}
+                    >
+                      Sign up with Google
+                    </button>
+                  </div>
+                  <div className="another-github">
+                    <button
+                      className="btn btn-secondary github"
+                      type="button"
+                      onClick={this.githubSignIn}
+                    >
+                      Sign up with GitHub
+                    </button>
+                  </div>
+                  <hr></hr>
+                  <p className="already">
+                    Already have an account?{" "}
+                    <Link className="move" to="/login">
+                      Login
+                    </Link>
+                  </p>
+                </form>
+              </div>
+            </div>
           </div>
-          <p className="also">
-            You can also sign up with any of these services
-          </p>
-          <div className="another-google">
-            <button
-              className="btn btn-danger mr-2 google"
-              type="button"
-              onClick={this.googleSignIn}
-            >
-              Sign up with Google
-            </button>
-          </div>
-          <div className="another-github">
-            <button
-              className="btn btn-secondary github"
-              type="button"
-              onClick={this.githubSignIn}
-            >
-              Sign up with GitHub
-            </button>
-          </div>
-          <hr></hr>
-          <p className="already">
-            Already have an account?{" "}
-            <Link className="move" to="/login">
-              Login
-            </Link>
-          </p>
-        </form>
-      </div>
-      </div>
-      </div>
-      </div>
+        </div>
       </div>
     );
   }
