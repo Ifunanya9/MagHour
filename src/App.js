@@ -3,7 +3,7 @@ import {
   Route,
   BrowserRouter as Router,
   Switch,
-  Redirect
+  Redirect,
 } from "react-router-dom";
 import Home from "./pages/Home";
 import Chat from "./pages/ChatClass";
@@ -11,19 +11,20 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import About from "./pages/About";
 import { auth } from "./services/firebase";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles.css";
 import InfoChildren from "./pages/InfoChildren";
 import InfoParents from "./pages/InfoParents";
 import InfoSchool from "./pages/InfoSchool";
+import AboutIfunanyachi from "./pages/AboutIfunanyachi";
+import AboutChikamso from "./pages/AboutChikamso";
 // import 'materialize-css';
 
 function PrivateRoute({ component: Component, authenticated, ...rest }) {
   return (
-    
     <Route
       {...rest}
-      render={props =>
+      render={(props) =>
         authenticated === true ? (
           <Component {...props} />
         ) : (
@@ -41,7 +42,7 @@ function PublicRoute({ component: Component, authenticated, ...rest }) {
   return (
     <Route
       {...rest}
-      render={props =>
+      render={(props) =>
         authenticated === false ? (
           <Component {...props} />
         ) : (
@@ -57,21 +58,21 @@ class App extends Component {
     super();
     this.state = {
       authenticated: false,
-      loading: true
+      loading: true,
     };
   }
 
   componentDidMount() {
-    auth().onAuthStateChanged(user => {
+    auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({
           authenticated: true,
-          loading: false
+          loading: false,
         });
       } else {
         this.setState({
           authenticated: false,
-          loading: false
+          loading: false,
         });
       }
     });
@@ -107,11 +108,12 @@ class App extends Component {
             <Route path="/info-for-chidren" component={InfoChildren} />
             <Route path="/info-for-parents" component={InfoParents} />
             <Route path="/info-for-schools" component={InfoSchool} />
+            <Route path="/about-ifunanyachi" component={AboutIfunanyachi} />
+            <Route path="/about-chikamso" component={AboutChikamso} />
           </Switch>
         </Router>
       </div>
     );
-    
   }
 }
 
