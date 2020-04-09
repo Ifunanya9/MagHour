@@ -10,7 +10,7 @@ export default class Login extends Component {
     super();
     this.state = {
       error: null,
-      email: "",
+      firstname: "",
       password: ""
     };
     this.handleChange = this.handleChange.bind(this);
@@ -29,7 +29,7 @@ export default class Login extends Component {
     event.preventDefault();
     this.setState({ error: "" });
     try {
-      await signin(this.state.email, this.state.password);
+      await signin(this.state.firstname, this.state.password);
     } catch (error) {
       this.setState({ error: error.message });
     }
@@ -83,10 +83,10 @@ export default class Login extends Component {
             <input
               className="form-control"
               placeholder="Email"
-              name="email"
-              type="email"
+              name="firstname"
+              type="text"
               onChange={this.handleChange}
-              value={this.state.email}
+              value={this.state.fistname}
             />
           </div>
           <div className="form-group">

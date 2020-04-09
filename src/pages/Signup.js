@@ -11,6 +11,8 @@ export default class SignUp extends Component {
     this.state = {
       error: null,
       email: "",
+      firstname:"",
+      lastname:"",
       password: "",
     };
     this.handleChange = this.handleChange.bind(this);
@@ -74,7 +76,22 @@ export default class SignUp extends Component {
                   <p className="lead">
                     Fill in the form below to create an account.
                   </p>
-                  <div className="form-group">
+                    <input
+                      className="form-control"
+                      placeholder="FirstName"
+                      name="firstname"
+                      onChange={this.handleChange}
+                      value={this.state.firstname}
+                      type="text"
+                    ></input>
+                    <input
+                      className="form-control"
+                      placeholder="LastName"
+                      name="lastname"
+                      onChange={this.handleChange}
+                      value={this.state.lastname}
+                      type="text"
+                    ></input>
                     <input
                       className="form-control"
                       placeholder="Email"
@@ -83,8 +100,6 @@ export default class SignUp extends Component {
                       onChange={this.handleChange}
                       value={this.state.email}
                     ></input>
-                  </div>
-                  <div className="form-group">
                     <input
                       className="form-control"
                       placeholder="Password"
@@ -93,16 +108,13 @@ export default class SignUp extends Component {
                       value={this.state.password}
                       type="password"
                     ></input>
-                  </div>
 
-                  <div className="form-group">
                     {this.state.error ? (
                       <p className="text-danger">{this.state.error}</p>
                     ) : null}
                     <button className="btn btn-primary px-5" type="submit">
                       Sign up
                     </button>
-                  </div>
                   <p className="also">
                     You can also sign up with any of these services
                   </p>
@@ -131,10 +143,11 @@ export default class SignUp extends Component {
                       Login
                     </Link>
                   </p>
+
                 </form>
               </div>
-            </div>
-          </div>
+              </div>
+              </div>              
         </div>
       </div>
     );

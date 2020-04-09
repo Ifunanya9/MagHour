@@ -110,10 +110,20 @@ export default class Chat extends Component {
                     <strong>{this.formatTime(chat.timestamp)}</strong>
                   </Card.Header>
                   <Card.Body>
-                    <Card.Text>{chat.content}</Card.Text>
-                    {/* <Card.Footer>
-                  <button onclick="confirmation()">Delete</button>
-                </Card.Footer> */}
+                    <Card.Text>
+                      {chat.content}
+                      <br />
+                      <br />
+                      {chat.chatBy === this.state.user.email ? (
+                        <button
+                          className="btn red"
+                          type="button"
+                          onclick="return confirm('Are you sure you want to delete this item')"
+                        >
+                          Delete
+                        </button>
+                      ) : null}
+                    </Card.Text>
                   </Card.Body>
                 </Card>
               );
