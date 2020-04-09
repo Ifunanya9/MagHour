@@ -109,9 +109,9 @@ export default class Chat extends Component {
                 <Card.Text>
                   {chat.content}
                 </Card.Text>
-                {/* <Card.Footer>
+                 <Card.Footer>
                   <button onclick="confirmation()">Delete</button>
-                </Card.Footer> */}
+                </Card.Footer> 
               </Card.Body>
             </Card>
             )
@@ -131,8 +131,8 @@ export default class Chat extends Component {
             {this.state.error ? (
               <p className="text-danger">{this.state.error}</p>
             ) : null}
-            {this.state.content ? (
-              this.state.content !== " " ? (
+            {this.state.content ?(
+              this.state.content !== " " ?(
                 <button
                   type="submit"
                   className="btn btn-submit px-5 mt-4 button chat-bubble"

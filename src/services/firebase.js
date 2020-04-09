@@ -3,9 +3,9 @@ import "firebase/auth";
 import "firebase/database";
 
 const config = {
-  apiKey: "AIzaSyDRr8v9cnnZhpkmhn-sQOGf20FpgD_tH0A",
-  authDomain: "maghour-42f2a.firebaseapp.com",
-  databaseURL: "https://maghour-42f2a.firebaseio.com",
+  apiKey: "AIzaSyA0IVSHJi0hdSeH7CL4B3g5eJeSMvqJZAg",
+  authDomain: "maghour-577d7.firebaseapp.com",
+  databaseURL: "https://maghour-577d7.firebaseio.com",
 
   type: "service_account",
   project_id: "maghour-2e48d",
