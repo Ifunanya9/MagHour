@@ -65,8 +65,8 @@ export default class About extends Component {
                 <br />
                 <h3>About the website</h3>
                 <p>
-                  The website is mainly because about coronavirus its because we
-                  couldn't see each other and it was very boring.
+                  We made the website because of the coronavirus so that people
+                  could chat to their friends
                   <br />
                   You can only talk to your family plus not that much of people
                   have phones so they can talk on whatsapp and noones the age
@@ -93,7 +93,7 @@ export default class About extends Component {
           </section>
         </div>
       </div>
-      // Hi I am one of the creators of MagHour and I am going to tell you why we created MagHour<br/>We created Maghour because about coronavirus and we know that not everybody has a phone which they can use whatsapp like us so we decided to create MagHour
+      // We created Maghour because about coronavirus and we know that not everybody has a phone which they can use whatsapp like us so we decided to create MagHour
     );
   }
 }

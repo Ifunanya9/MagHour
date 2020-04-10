@@ -115,11 +115,7 @@ export default class Chat extends Component {
                       <br />
                       <br />
                       {chat.chatBy === this.state.user.email ? (
-                        <button
-                          className="btn red"
-                          type="button"
-                          onclick="return confirm('Are you sure you want to delete this item')"
-                        >
+                        <button className="btn red" type="button">
                           Delete
                         </button>
                       ) : null}
