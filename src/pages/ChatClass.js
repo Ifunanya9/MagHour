@@ -68,6 +68,15 @@ export default class Chat extends Component {
     }
   }
 
+ async handleDelete(event) {
+   try{
+      await db.ref("chats").delete(event)
+      this.componentDidMount();
+      }
+  catch(error) {
+  }
+}
+
   // getUid(userid){
   //   this.setState({uid: userid});
   // }
@@ -116,9 +125,9 @@ export default class Chat extends Component {
                       <br />
                       {chat.chatBy === this.state.user.email ? (
                         <button
-                          className="btn red"
+                          className="btn blue"
                           type="button"
-                          onclick="return confirm('Are you sure you want to delete this item')"
+                          onClick = {this.handleDelete(chat.id)}
                         >
                           Delete
                         </button>
