@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import Header from "../components/Header";
 import { auth } from "../services/firebase";
 import { db } from "../services/firebase";
-import {Card} from "react-bootstrap"
+import { Card } from "react-bootstrap";
 import "./chat.css";
-
-
 
 export default class Chat extends Component {
   constructor(props) {
@@ -13,15 +11,15 @@ export default class Chat extends Component {
     this.state = {
       user: auth().currentUser,
       chats: [],
+      userChatsAll: [],
       content: "",
       readError: null,
       // uid: null,
       writeError: null,
-      loadingChats: false
+      loadingChats: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.getUid = this.getUid.bind(this);
     this.myRef = React.createRef();
   }
 
@@ -29,15 +27,27 @@ export default class Chat extends Component {
     this.setState({ readError: null, loadingChats: true });
     const chatArea = this.myRef.current;
     try {
-      db.ref("chats").on("value", snapshot => {
+      db.ref("chats").on("value", (snapshot) => {
         let chats = [];
-        snapshot.forEach(snap => {
+        let userChatsAll = [];
+        snapshot.forEach((snap) => {
           chats.push(snap.val());
         });
-        chats.sort(function(a, b) {
+        console.log(chats);
+        chats.forEach((chat) => {
+          // userChatsAll.push(userChat);
+          userChatsAll.push(chat.userChats); 
+          console.log(userChatsAll);
+        })
+        
+        chats.sort(function (a, b) {
+          return a.timestamp - b.timestamp;
+        });
+        userChatsAll.sort(function (a, b) {
           return a.timestamp - b.timestamp;
         });
         this.setState({ chats });
+        this.setState({ userChatsAll });
         chatArea.scrollBy(0, chatArea.scrollHeight);
         this.setState({ loadingChats: false });
       });
@@ -48,7 +58,7 @@ export default class Chat extends Component {
 
   handleChange(event) {
     this.setState({
-      content: event.target.value
+      content: event.target.value,
     });
   }
 
@@ -57,18 +67,26 @@ export default class Chat extends Component {
     this.setState({ writeError: null });
     const chatArea = this.myRef.current;
     try {
-      await db.ref("chats").push({
+        await db.ref("chats").child(this.state.user.uid).child("userChats").push({
         content: this.state.content,
         timestamp: Date.now(),
         uid: this.state.user.uid,
-        chatBy: this.state.user.email
-      });
-      this.setState({ content: "" });
+        chatBy: this.state.user.email,
+      }); 
+      this.setState({ content: "" })
       chatArea.scrollBy(0, chatArea.scrollHeight);
     } catch (error) {
       this.setState({ writeError: error.message });
     }
   }
+
+ async handleDelete(event) {
+   try{
+      await db.ref().child("chats").remove(event)
+      }
+  catch(error) {
+  }
+}
 
   // getUid(userid){
   //   this.setState({uid: userid});
@@ -77,73 +95,103 @@ export default class Chat extends Component {
   formatTime(timestamp) {
     const d = new Date(timestamp);
     const time = `
-    ${d.getDate()}/${d.getMonth() +
-      1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()} `;
+    ${d.getDate()}/${
+      d.getMonth() + 1
+    }/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()} `;
     return time;
   }
 
   render() {
+
+    let userChatArray = [];
+    this.state.chats.forEach((chat)=> {
+      userChatArray.push(chat.userChats);
+    })
+    console.log(userChatArray);
+    
+
     return (
       <div>
         <Header />
         <br />
         <div className="container">
-        <div className="chat-area" ref={this.myRef}>
-          {this.state.loadingChats ? (
-            <div className="spinner-border text-success" role="status">
-              <span className="sr-only">Loading...</span>
-            </div>
-          ) : (
-            ""
-          )}
-          {this.state.chats.map(chat => {
-            console.log(chat.chatBy)
-            return (
-              <Card className={"chat-bubble " + (this.state.user.uid === chat.uid ? "current-user" : "")}>
-              <Card.Header >
-                <strong>{chat.chatBy}</strong>
-              <br/>
-                <strong>{this.formatTime(chat.timestamp)}</strong>
-              </Card.Header>
-              <Card.Body>
-                <Card.Text>
-                  {chat.content}
-                </Card.Text>
-              </Card.Body>
-            </Card>
-            )
-          })}
-        </div>
-        <div className="text">
-          <label htmlFor="text">Chat Here!</label>
-          <form onSubmit={this.handleSubmit} className="mx-3">
-            <textarea
-              className="form-control chat-bubble chat-form"
-              name="content"
-              onChange={this.handleChange}
-              value={this.state.content}
-              id="text"
-            ></textarea>
-
-            {this.state.error ? (
-              <p className="text-danger">{this.state.error}</p>
-            ) : null}
-            {this.state.content ? (
-              this.state.content !== " " ? (
-                <button
-                  type="submit"
-                  className="btn btn-submit px-5 mt-4 button chat-bubble"
+          <div className="chat-area" ref={this.myRef}>
+            {this.state.loadingChats ? (
+              <div className="spinner-border text-success" role="status">
+                <span className="sr-only">Loading...</span>
+              </div>
+            ) : (
+              ""
+            )}
+            {/* {this.state.chats.forEach((chat) => {  */}
+              {this.userChatArray.map((userChat) => {
+              if (userChat.uid !== null){
+              return (
+                <Card
+                  className={
+                    "chat-bubble text-center " +
+                    (this.state.user.uid === userChat.uid ? "current-user" : "")
+                  }
                 >
-                  Send
-                </button>
-              ) : null
-            ) : null}
-          </form>
-        </div>
-        <div className="py-5 mx-3 text">
-          Login in as:{" "}
-          <strong className="text-info">{this.state.user.email}</strong>
-        </div>
+                  <Card.Header key={userChat.id}>
+                    <strong>{userChat.chatBy}</strong>
+                    <br />
+                    <strong>{this.formatTime(userChat.timestamp)}</strong>
+                  </Card.Header>
+                  <Card.Body>
+                    <Card.Text key={userChat.id}>
+                      {userChat.content}
+                      <br />
+                      <br />
+                      {userChat.chatBy === this.state.user.email ? (
+                        <button
+                          key={userChat.id}
+                          value={userChat}
+                          className="btn blue"
+                          type="button"
+                          onClick = {()=>this.handleDelete(userChat.id)}
+                        >
+                          Delete
+                        </button>
+                      ) : null}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              )}
+              return null
+              // })
+              })}
+          </div>
+          <div className="text">
+            <label htmlFor="text">Chat Here!</label>
+            <form onSubmit={this.handleSubmit} className="mx-3">
+              <textarea
+                className="form-control chat-bubble chat-form"
+                name="content"
+                onChange={this.handleChange}
+                value={this.state.content}
+                id="text"
+              ></textarea>
+
+              {this.state.error ? (
+                <p className="text-danger">{this.state.error}</p>
+              ) : null}
+              {this.state.content ? (
+                this.state.content !== " " ? (
+                  <button
+                    type="submit"
+                    className="btn btn-submit px-5 mt-4 button chat-bubble"
+                  >
+                    Send
+                  </button>
+                ) : null
+              ) : null}
+            </form>
+          </div>
+          <div className="py-5 mx-3 text">
+            Login in as:{" "}
+            <strong className="text-info">{this.state.user.email}</strong>
+          </div>
         </div>
       </div>
     );

@@ -1,8 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Open + Sans);
 
-body{
-  background: #e0dcdc;
-  font-family: 'Open Sans', sans-serif;
+body {
+  font-family: "Open Sans", sans-serif;
 }
 
 .search {
@@ -22,7 +21,7 @@ body{
   color: rgb(244, 247, 246);
 }
 
-.searchTerm:focus{
+.searchTerm:focus {
   color: rgb(1, 11, 19);
 }
 
@@ -39,10 +38,19 @@ body{
 }
 
 /*Resize the wrap to see the search bar change!*/
-.wrap{
+.wrap {
   width: 30%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 990px) {
+  .hi {
+    background-color: #2f4f4f;
+    /* background-color: rgb(68, 66, 66); */
+    align-items: center;
+    width: 20%;
+  }
 }

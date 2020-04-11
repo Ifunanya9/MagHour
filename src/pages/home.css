@@ -21,3 +21,45 @@
   display: flex;
   justify-content: center;
 }
+
+.smile {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  z-index: -1;
+  /* opacity: -1; */
+  left: 0px;
+  bottom: 0px;
+}
+
+/* .start {
+  background-color: cornflowerblue;
+  width: 100%;
+} */
+
+.dashboard {
+  width: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.together {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+}
+
+.space {
+  height: 200px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.profile {
+  color: black;
+  font-size: medium;
+}
