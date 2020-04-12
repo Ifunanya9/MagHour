@@ -1,7 +1,7 @@
 import React from "react";
 import { auth } from "../services/firebase";
 import logo from "../starter.png";
-import { Nav, Navbar } from "react-bootstrap";
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import "./nav.css";
 
 const Header = () => {
@@ -27,9 +27,12 @@ const Header = () => {
               <Nav.Item>
                 <Nav.Link href="/chat" eventKey="/chat">School</Nav.Link>
               </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href="/chat" eventKey="/chat">Profile</Nav.Link>
-              </Nav.Item>
+              <NavDropdown title="Profile" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/status">Status</NavDropdown.Item>
+                <NavDropdown.Item href="/account">Account</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="/unsubscribe">Unsubscribe</NavDropdown.Item>
+              </NavDropdown>
               <li>
                 <button
                   onClick={() => auth().signOut()}>
