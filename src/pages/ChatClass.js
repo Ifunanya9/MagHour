@@ -11,6 +11,7 @@ export default class Chat extends Component {
     this.state = {
       user: auth().currentUser,
       chats: [],
+      userChatsAll: [],
       content: "",
       readError: null,
       // uid: null,
@@ -19,7 +20,6 @@ export default class Chat extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
     this.myRef = React.createRef();
   }
 
@@ -29,13 +29,25 @@ export default class Chat extends Component {
     try {
       db.ref("chats").on("value", (snapshot) => {
         let chats = [];
+        let userChatsAll = [];
         snapshot.forEach((snap) => {
           chats.push(snap.val());
         });
+        console.log(chats);
+        chats.forEach((chat) => {
+          // userChatsAll.push(userChat);
+          userChatsAll.push(chat.userChats); 
+          console.log(userChatsAll);
+        })
+        
         chats.sort(function (a, b) {
           return a.timestamp - b.timestamp;
         });
+        userChatsAll.sort(function (a, b) {
+          return a.timestamp - b.timestamp;
+        });
         this.setState({ chats });
+        this.setState({ userChatsAll });
         chatArea.scrollBy(0, chatArea.scrollHeight);
         this.setState({ loadingChats: false });
       });
@@ -55,13 +67,13 @@ export default class Chat extends Component {
     this.setState({ writeError: null });
     const chatArea = this.myRef.current;
     try {
-      await db.ref("chats").push({
+        await db.ref("chats").child(this.state.user.uid).child("userChats").push({
         content: this.state.content,
         timestamp: Date.now(),
         uid: this.state.user.uid,
         chatBy: this.state.user.email,
-      });
-      this.setState({ content: "" });
+      }); 
+      this.setState({ content: "" })
       chatArea.scrollBy(0, chatArea.scrollHeight);
     } catch (error) {
       this.setState({ writeError: error.message });
@@ -70,7 +82,7 @@ export default class Chat extends Component {
 
  async handleDelete(event) {
    try{
-      await db.ref("chat").remove(event)
+      await db.ref().child("chats").remove(event)
       }
   catch(error) {
   }
@@ -90,6 +102,14 @@ export default class Chat extends Component {
   }
 
   render() {
+
+    let userChatArray = [];
+    this.state.chats.forEach((chat)=> {
+      userChatArray.push(chat.userChats);
+    })
+    console.log(userChatArray);
+    
+
     return (
       <div>
         <Header />
@@ -103,31 +123,33 @@ export default class Chat extends Component {
             ) : (
               ""
             )}
-            {this.state.chats.map((chat) => {
-               if (chat.uidq !== null) {
-                console.log(chat.chatBy);
+            {/* {this.state.chats.forEach((chat) => {  */}
+              {this.userChatArray.map((userChat) => {
+              if (userChat.uid !== null){
               return (
                 <Card
                   className={
                     "chat-bubble text-center " +
-                    (this.state.user.uid === chat.uid ? "current-user" : "")
+                    (this.state.user.uid === userChat.uid ? "current-user" : "")
                   }
                 >
-                  <Card.Header>
-                    <strong>{chat.chatBy}</strong>
+                  <Card.Header key={userChat.id}>
+                    <strong>{userChat.chatBy}</strong>
                     <br />
-                    <strong>{this.formatTime(chat.timestamp)}</strong>
+                    <strong>{this.formatTime(userChat.timestamp)}</strong>
                   </Card.Header>
                   <Card.Body>
-                    <Card.Text>
-                      {chat.content}
+                    <Card.Text key={userChat.id}>
+                      {userChat.content}
                       <br />
                       <br />
-                      {chat.chatBy === this.state.user.email ? (
+                      {userChat.chatBy === this.state.user.email ? (
                         <button
+                          key={userChat.id}
+                          value={userChat}
                           className="btn blue"
                           type="button"
-                          onClick = {this.handleDelete()}
+                          onClick = {()=>this.handleDelete(userChat.id)}
                         >
                           Delete
                         </button>
@@ -135,8 +157,10 @@ export default class Chat extends Component {
                     </Card.Text>
                   </Card.Body>
                 </Card>
-              )};
-            })}
+              )}
+              return null
+              // })
+              })}
           </div>
           <div className="text">
             <label htmlFor="text">Chat Here!</label>
