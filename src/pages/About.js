@@ -55,10 +55,10 @@ export default class About extends Component {
                   <img className="together" src={boy} alt="smiling" />
                   <img className="together" src={girl} alt="smiling" />
                   <br />
-                  <Link className="px-5 mr-3 profile" to="/about-chikamso">
+                  <Link className="px-5 mr-3" to="/about-chikamso">
                     Chikamso
                   </Link>
-                  <Link className="px-5 mr-3 profile" to="/about-ifunanyachi">
+                  <Link className="px-5 mr-3" to="/about-ifunanyachi">
                     Ifunanyachi
                   </Link>
                 </div>
@@ -67,6 +67,10 @@ export default class About extends Component {
                 <br />
                 <h3>About the website</h3>
                 <p>The website is mainly because about coronavirus its because we couldn't see each other and it was very boring.<br/>You can only talk to your family plus not that much of people have phones so they can talk on whatsapp and noones the age for facebook and twitter in primmary school.<br/>This website is mainly for children because parents they have facebook phones and twitter and other social media stuff but in the other hand us children we don't have access to social media or whatsapp.<br/>We want people to make friends but not meeting each other face to face because we don't want people catching germs.<br/>In the future we're going to put on our website something that says donation it means if you can donate us so we can keep our website going.</p>
+                <br/>
+                <br/>
+                <br/>
+                <p>Thank these people for helping us on this website:<br/><br/><p><Link to="https://www.youtube.com/channel/UClb90NQQcskPUGDIXsQEz5Q">Dev Ed</Link></p><p><Link to="https://www.youtube.com/user/schafer5">Corey Schafer</Link></p><p><Link to="https://www.udemy.com/course/the-complete-python-masterclass/">Udemy</Link></p>These youtube channels helped us to learn coding you can go on and do these courses if you want.</p>
                 {/* <div className="mt-4">
                   <Link
                     className="btn btn-primary px-5 mr-3 create"

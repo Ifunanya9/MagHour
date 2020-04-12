@@ -19,7 +19,7 @@ export default class Chat extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.getUid = this.getUid.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
     this.myRef = React.createRef();
   }
 
@@ -70,8 +70,7 @@ export default class Chat extends Component {
 
  async handleDelete(event) {
    try{
-      await db.ref("chats").delete(event)
-      this.componentDidMount();
+      await db.ref("chat").remove(event)
       }
   catch(error) {
   }
@@ -105,7 +104,8 @@ export default class Chat extends Component {
               ""
             )}
             {this.state.chats.map((chat) => {
-              console.log(chat.chatBy);
+               if (chat.uidq !== null) {
+                console.log(chat.chatBy);
               return (
                 <Card
                   className={
@@ -127,7 +127,7 @@ export default class Chat extends Component {
                         <button
                           className="btn blue"
                           type="button"
-                          onClick = {this.handleDelete(chat.id)}
+                          onClick = {this.handleDelete()}
                         >
                           Delete
                         </button>
@@ -135,7 +135,7 @@ export default class Chat extends Component {
                     </Card.Text>
                   </Card.Body>
                 </Card>
-              );
+              )};
             })}
           </div>
           <div className="text">
