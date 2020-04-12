@@ -68,6 +68,13 @@ export default class Chat extends Component {
     }
   }
 
+  async handleDelete(event) {
+    try {
+      await db.ref("chats").delete(event);
+      this.componentDidMount();
+    } catch (error) {}
+  }
+
   // getUid(userid){
   //   this.setState({uid: userid});
   // }
@@ -115,7 +122,11 @@ export default class Chat extends Component {
                       <br />
                       <br />
                       {chat.chatBy === this.state.user.email ? (
-                        <button className="btn red" type="button">
+                        <button
+                          className="btn red"
+                          type="button"
+                          onClick={this.handleDelete(chat.id)}
+                        >
                           Delete
                         </button>
                       ) : null}

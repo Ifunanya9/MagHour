@@ -1,11 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #fcfcfc;
+  font-family: "Poppins", sans-serif;
+  background-color: #e6e6fa;
 }
 
-.chat-area, .home {
+.chat-area,
+.home {
   margin-top: 60px;
 }
 
@@ -15,8 +16,12 @@ body {
   overflow-y: scroll;
 }
 
+/* this is your uid ifunanyachi: LC2QJtdOM4c3HaGxFlOjEwjWk363 */
+
+/* this is daddy's uid: Q7D9hb9bzTUifqFpn2t5Cea31pv1 */
+
 .chat-area .chat-bubble {
-  background-color: #bbdefb;
+  background-color: #ffe4b5;
   padding: 20px;
   border-radius: 4px;
   max-width: 300px;
@@ -31,11 +36,12 @@ body {
 
 .chat-area .chat-bubble.current-user {
   margin-left: auto;
-  background-color: #a5d6a7;
+  background-color: #ffb6c1;
 }
 
 .form-control {
   width: 60%;
+  background-color: #ffb6c1;
 }
 
 .form-control:focus {

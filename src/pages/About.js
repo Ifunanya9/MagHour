@@ -48,6 +48,8 @@ export default class About extends Component {
                 <br />
                 <br />
                 <br />
+                <br />
+                <br />
                 <h3>Who made it</h3>
                 <div className="space">
                   <img className="together" src={boy} alt="smiling" />
@@ -84,6 +86,18 @@ export default class About extends Component {
                   says donation it means if you can donate us so we can keep our
                   website going.
                 </p>
+                {/* <div className="mt-4">
+                  <Link
+                    className="btn btn-primary px-5 mr-3 create"
+                    to="/signup"
+                  >
+                    Create New Account
+                  </Link>
+
+                  <Link className="btn px-5 log" to="/login">
+                    Login to Your Account
+                  </Link>
+                </div> */}
               </div>
             </div>
             <br />
