@@ -29,25 +29,13 @@ export default class Chat extends Component {
     try {
       db.ref("chats").on("value", (snapshot) => {
         let chats = [];
-        let userChatsAll = [];
         snapshot.forEach((snap) => {
           chats.push(snap.val());
-        });
-        console.log(chats);
-        chats.forEach((chat) => {
-          // userChatsAll.push(userChat);
-          userChatsAll.push(chat.userChats);
-          console.log(userChatsAll);
-        });
-
+        })    
         chats.sort(function (a, b) {
           return a.timestamp - b.timestamp;
         });
-        userChatsAll.sort(function (a, b) {
-          return a.timestamp - b.timestamp;
-        });
         this.setState({ chats });
-        this.setState({ userChatsAll });
         chatArea.scrollBy(0, chatArea.scrollHeight);
         this.setState({ loadingChats: false });
       });
@@ -95,12 +83,12 @@ export default class Chat extends Component {
       return time;
     }
 
-    render();
-    let userChatArray = [];
-    this.state.chats.forEach((chat) => {
-      userChatArray.push(chat.userChats);
-    });
-    console.log(userChatArray);
+    // render(){
+    // let userChatArray = [];
+    // this.state.chats.forEach((chat) => {
+    //   userChatArray.push(chat.userChats);
+    // });
+    // console.log(userChatArray);
 
     return (
       <div>
@@ -192,3 +180,4 @@ export default class Chat extends Component {
     );
   }
 }
+// }
