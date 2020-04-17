@@ -36,10 +36,10 @@ export default class Chat extends Component {
         console.log(chats);
         chats.forEach((chat) => {
           // userChatsAll.push(userChat);
-          userChatsAll.push(chat.userChats); 
+          userChatsAll.push(chat.userChats);
           console.log(userChatsAll);
-        })
-        
+        });
+
         chats.sort(function (a, b) {
           return a.timestamp - b.timestamp;
         });
@@ -67,47 +67,40 @@ export default class Chat extends Component {
     this.setState({ writeError: null });
     const chatArea = this.myRef.current;
     try {
-        await db.ref("chats").child(this.state.user.uid).child("userChats").push({
+      await db.ref("chats").child(this.state.user.uid).child("userChats").push({
         content: this.state.content,
         timestamp: Date.now(),
         uid: this.state.user.uid,
         chatBy: this.state.user.email,
-      }); 
-      this.setState({ content: "" })
+      });
+      this.setState({ content: "" });
       chatArea.scrollBy(0, chatArea.scrollHeight);
     } catch (error) {
       this.setState({ writeError: error.message });
     }
   }
 
- async handleDelete(event) {
-   try{
-      await db.ref().child("chats").remove(event)
-      }
-  catch(error) {
-  }
+  async handleDelete(event) {
+    try {
+      await db.ref().child("chats").remove(event);
+    } catch (error) {}
 
-  // getUid(userid){
-  //   this.setState({uid: userid});
-  // }
 
-  formatTime(timestamp) {
-    const d = new Date(timestamp);
-    const time = `
+    formatTime(timestamp) {
+      const d = new Date(timestamp);
+      const time = `
     ${d.getDate()}/${
-      d.getMonth() + 1
-    }/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()} `;
-    return time;
-  }
+        d.getMonth() + 1
+      }/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()} `;
+      return time;
+    }
 
-  render() {
-
+    render();
     let userChatArray = [];
-    this.state.chats.forEach((chat)=> {
+    this.state.chats.forEach((chat) => {
       userChatArray.push(chat.userChats);
-    })
+    });
     console.log(userChatArray);
-    
 
     return (
       <div>
@@ -123,43 +116,46 @@ export default class Chat extends Component {
               ""
             )}
             {/* {this.state.chats.forEach((chat) => {  */}
-              {this.userChatArray.map((userChat) => {
-              if (userChat.uid !== null){
-              return (
-                <Card
-                  className={
-                    "chat-bubble text-center " +
-                    (this.state.user.uid === userChat.uid ? "current-user" : "")
-                  }
-                >
-                  <Card.Header key={userChat.id}>
-                    <strong>{userChat.chatBy}</strong>
-                    <br />
-                    <strong>{this.formatTime(userChat.timestamp)}</strong>
-                  </Card.Header>
-                  <Card.Body>
-                    <Card.Text key={userChat.id}>
-                      {userChat.content}
+            {this.userChatArray.map((userChat) => {
+              if (userChat.uid !== null) {
+                return (
+                  <Card
+                    className={
+                      "chat-bubble text-center " +
+                      (this.state.user.uid === userChat.uid
+                        ? "current-user"
+                        : "")
+                    }
+                  >
+                    <Card.Header key={userChat.id}>
+                      <strong>{userChat.chatBy}</strong>
                       <br />
-                      <br />
-                      {userChat.chatBy === this.state.user.email ? (
-                        <button
-                          key={userChat.id}
-                          value={userChat}
-                          className="btn blue"
-                          type="button"
-                          onClick = {()=>this.handleDelete(userChat.id)}
-                        >
-                          Delete
-                        </button>
-                      ) : null}
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              )}
-              return null
+                      <strong>{this.formatTime(userChat.timestamp)}</strong>
+                    </Card.Header>
+                    <Card.Body>
+                      <Card.Text key={userChat.id}>
+                        {userChat.content}
+                        <br />
+                        <br />
+                        {userChat.chatBy === this.state.user.email ? (
+                          <button
+                            key={userChat.id}
+                            value={userChat}
+                            className="btn blue"
+                            type="button"
+                            onClick={() => this.handleDelete(userChat.id)}
+                          >
+                            Delete
+                          </button>
+                        ) : null}
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                );
+              }
+              return null;
               // })
-              })}
+            })}
           </div>
           <div className="text">
             <label htmlFor="text">Chat Here!</label>

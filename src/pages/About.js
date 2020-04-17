@@ -55,10 +55,10 @@ export default class About extends Component {
                   <img className="together" src={boy} alt="smiling" />
                   <img className="together" src={girl} alt="smiling" />
                   <br />
-                  <Link className="px-5 mr-3 profile" to="/about-chikamso">
+                  <Link className="px-5 mr-3" to="/about-chikamso">
                     Chikamso
                   </Link>
-                  <Link className="px-5 mr-3 profile" to="/about-ifunanyachi">
+                  <Link className="px-5 mr-3" to="/about-ifunanyachi">
                     Ifunanyachi
                   </Link>
                 </div>
@@ -67,8 +67,8 @@ export default class About extends Component {
                 <br />
                 <h3>About the website</h3>
                 <p>
-                  We made the website because of the coronavirus so that people
-                  could chat to their friends
+                  The website is mainly because about coronavirus its because we
+                  couldn't see each other and it was very boring.
                   <br />
                   You can only talk to your family plus not that much of people
                   have phones so they can talk on whatsapp and noones the age
@@ -86,6 +86,7 @@ export default class About extends Component {
                   says donation it means if you can donate us so we can keep our
                   website going.
                 </p>
+
                 {/* <div className="mt-4">
                   <Link
                     className="btn btn-primary px-5 mr-3 create"

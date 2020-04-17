@@ -1,6 +1,7 @@
 {
   "rules": {
     "chats": {
+      ".delete": "auth == null",
       ".read": "auth != null",
       ".write": "auth != null"
     }
