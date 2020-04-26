@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import girl from "../ifunanyachi.jpg";
-import "./home.css";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
+import girl from "../../img/ifunanyachi.jpg";
+import "../Home/home.css";
 
 export default class AboutIfunanyachi extends Component {
   render() {

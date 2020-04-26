@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import Header from "../components/Header";
-import { auth } from "../services/firebase";
-import { db } from "../services/firebase";
+import Header from "../../components/Header/Header";
+import { auth } from "../../services/firebase";
+import { db } from "../../services/firebase";
 import { Card } from "react-bootstrap";
+import ReactEmoji from "react-emoji";
 import "./chat.css";
 
 export default class Chat extends Component {
@@ -31,7 +32,7 @@ export default class Chat extends Component {
         let chats = [];
         snapshot.forEach((snap) => {
           chats.push(snap.val());
-        })    
+        });
         chats.sort(function (a, b) {
           return a.timestamp - b.timestamp;
         });
@@ -55,30 +56,23 @@ export default class Chat extends Component {
     this.setState({ writeError: null });
     const chatArea = this.myRef.current;
     try {
-        await db.ref("chats").child(this.state.user.uid).child("userChats").push({
+      await db.ref("chats").push({
         content: this.state.content,
         timestamp: Date.now(),
         uid: this.state.user.uid,
         chatBy: this.state.user.email,
-      }); 
-      this.setState({ content: "" })
+      });
+      this.setState({ content: "" });
       chatArea.scrollBy(0, chatArea.scrollHeight);
     } catch (error) {
       this.setState({ writeError: error.message });
     }
   }
 
- async handleDelete(event) {
-   try{
-      await db.ref().child("chats").remove(event)
-      }
-  catch(error) {
-  }
-}
-
-  // getUid(userid){
-  //   this.setState({uid: userid});
-  // }
+  // async handleDelete(event) {
+  //   try {
+  //     await db.ref().child("chats").remove(event);
+  //   } catch (error){}}
 
   formatTime(timestamp) {
     const d = new Date(timestamp);
@@ -89,8 +83,13 @@ export default class Chat extends Component {
     return time;
   }
 
+  // render(){
+  // let userChatArray = [];
+  // this.state.chats.forEach((chat) => {
+  //   userChatArray.push(chat.userChats);
+  // });
+  // console.log(userChatArray);
   render() {
-    console.log(this.state.chats);
     return (
       <div>
         <Header />
@@ -104,44 +103,47 @@ export default class Chat extends Component {
             ) : (
               ""
             )}
-
-              {this.state.chats.map((userChat) => {
-              if (userChat.uid !== null){
-              return (
-                <Card
-                  className={
-                    "chat-bubble text-center " +
-                    (this.state.user.uid === userChat.uid ? "current-user" : "")
-                  }
-                >
-                  <Card.Header key={userChat.id}>
-                    <strong>{userChat.chatBy}</strong>
-                    <br />
-                    <strong>{this.formatTime(userChat.timestamp)}</strong>
-                  </Card.Header>
-                  <Card.Body>
-                    <Card.Text key={userChat.id}>
-                      {userChat.content}
+            {/* {this.state.chats.forEach((chat) => {  */}
+            {this.state.chats.map((userChat) => {
+              if (userChat.uid !== null) {
+                return (
+                  <Card
+                    className={
+                      "chat-bubble text-center " +
+                      (this.state.user.uid === userChat.uid
+                        ? "current-user"
+                        : "")
+                    }
+                  >
+                    <Card.Header key={userChat.id}>
+                      <strong>{userChat.chatBy}</strong>
                       <br />
-                      <br />
-                      {userChat.chatBy === this.state.user.email ? (
-                        <button
-                          key={userChat.id}
-                          value={userChat}
-                          className="btn blue"
-                          type="button"
-                          onClick = {()=>this.handleDelete(userChat.id)}
-                        >
-                          Delete
-                        </button>
-                      ) : null}
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              )}
-              return null
+                      <strong>{this.formatTime(userChat.timestamp)}</strong>
+                    </Card.Header>
+                    <Card.Body>
+                      <Card.Text key={userChat.id}>
+                        {ReactEmoji.emojify(userChat.content)}
+                        <br />
+                        <br />
+                        {userChat.chatBy === this.state.user.email ? (
+                          <button
+                            key={userChat.id}
+                            value={userChat}
+                            className="btn blue"
+                            type="button"
+                            onClick={() => this.handleDelete(userChat.id)}
+                          >
+                            Delete
+                          </button>
+                        ) : null}
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                );
+              }
+              return null;
               // })
-              })}
+            })}
           </div>
           <div className="text">
             <label htmlFor="text">Chat Here!</label>
@@ -152,6 +154,9 @@ export default class Chat extends Component {
                 onChange={this.handleChange}
                 value={this.state.content}
                 id="text"
+                onKeyPress={(event) =>
+                  event.key === "Enter" ? this.handleSubmit(event) : null
+                }
               ></textarea>
 
               {this.state.error ? (
