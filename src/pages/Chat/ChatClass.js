@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import Header from "../components/Header";
-import { auth } from "../services/firebase";
-import { db } from "../services/firebase";
+import Header from "../../components/Header/Header";
+import { auth } from "../../services/firebase";
+import { db } from "../../services/firebase";
 import { Card } from "react-bootstrap";
+import ReactEmoji from "react-emoji";
 import "./chat.css";
 
 export default class Chat extends Component {
@@ -31,7 +32,7 @@ export default class Chat extends Component {
         let chats = [];
         snapshot.forEach((snap) => {
           chats.push(snap.val());
-        })    
+        });
         chats.sort(function (a, b) {
           return a.timestamp - b.timestamp;
         });
@@ -55,7 +56,7 @@ export default class Chat extends Component {
     this.setState({ writeError: null });
     const chatArea = this.myRef.current;
     try {
-      await db.ref("chats").child(this.state.user.uid).child("userChats").push({
+      await db.ref("chats").push({
         content: this.state.content,
         timestamp: Date.now(),
         uid: this.state.user.uid,
@@ -68,28 +69,27 @@ export default class Chat extends Component {
     }
   }
 
-  async handleDelete(event) {
-    try {
-      await db.ref().child("chats").remove(event);
-    } catch (error) {}
+  // async handleDelete(event) {
+  //   try {
+  //     await db.ref().child("chats").remove(event);
+  //   } catch (error){}}
 
-
-    formatTime(timestamp) {
-      const d = new Date(timestamp);
-      const time = `
+  formatTime(timestamp) {
+    const d = new Date(timestamp);
+    const time = `
     ${d.getDate()}/${
-        d.getMonth() + 1
-      }/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()} `;
-      return time;
-    }
+      d.getMonth() + 1
+    }/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()} `;
+    return time;
+  }
 
-    // render(){
-    // let userChatArray = [];
-    // this.state.chats.forEach((chat) => {
-    //   userChatArray.push(chat.userChats);
-    // });
-    // console.log(userChatArray);
-
+  // render(){
+  // let userChatArray = [];
+  // this.state.chats.forEach((chat) => {
+  //   userChatArray.push(chat.userChats);
+  // });
+  // console.log(userChatArray);
+  render() {
     return (
       <div>
         <Header />
@@ -104,7 +104,7 @@ export default class Chat extends Component {
               ""
             )}
             {/* {this.state.chats.forEach((chat) => {  */}
-            {this.userChatArray.map((userChat) => {
+            {this.state.chats.map((userChat) => {
               if (userChat.uid !== null) {
                 return (
                   <Card
@@ -122,7 +122,7 @@ export default class Chat extends Component {
                     </Card.Header>
                     <Card.Body>
                       <Card.Text key={userChat.id}>
-                        {userChat.content}
+                        {ReactEmoji.emojify(userChat.content)}
                         <br />
                         <br />
                         {userChat.chatBy === this.state.user.email ? (
@@ -154,6 +154,9 @@ export default class Chat extends Component {
                 onChange={this.handleChange}
                 value={this.state.content}
                 id="text"
+                onKeyPress={(event) =>
+                  event.key === "Enter" ? this.handleSubmit(event) : null
+                }
               ></textarea>
 
               {this.state.error ? (
@@ -180,4 +183,3 @@ export default class Chat extends Component {
     );
   }
 }
-// }

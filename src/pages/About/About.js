@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
-import smile from "../chatting.jpg";
-import boy from "../chikamso.jpg";
-import girl from "../ifunanyachi.jpg";
-import "./home.css";
+import smile from "../../img/chatting.jpg";
+import boy from "../../img/chikamso.jpg";
+import girl from "../../img/ifunanyachi.jpg";
+import "../Home/home.css";
 
 export default class About extends Component {
   render() {

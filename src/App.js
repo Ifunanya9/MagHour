@@ -1,23 +1,25 @@
 import React, { Component } from "react";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 import {
   Route,
   BrowserRouter as Router,
   Switch,
   Redirect,
 } from "react-router-dom";
-import Home from "./pages/Home";
-import Chat from "./pages/ChatClass";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
-import About from "./pages/About";
+import Home from "./pages/Home/Home";
+import Chat from "./pages/Chat/ChatClass";
+import Signup from "./pages/Signup/Signup";
+import Login from "./pages/Login/Login";
+import About from "./pages/About/About";
 import { auth } from "./services/firebase";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles.css";
-import InfoChildren from "./pages/InfoChildren";
-import InfoParents from "./pages/InfoParents";
-import InfoSchool from "./pages/InfoSchool";
-import AboutIfunanyachi from "./pages/AboutIfunanyachi";
-import AboutChikamso from "./pages/AboutChikamso";
+import InfoChildren from "./pages/Info/InfoChildren";
+import InfoParents from "./pages/Info/InfoParents";
+import InfoSchool from "./pages/Info/InfoSchool";
+import AboutIfunanyachi from "./pages/About/AboutIfunanyachi";
+import AboutChikamso from "./pages/About/AboutChikamso";
 // import 'materialize-css';
 
 function PrivateRoute({ component: Component, authenticated, ...rest }) {
@@ -85,6 +87,7 @@ class App extends Component {
       </div>
     ) : (
       <div className="center">
+        <Header />
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
@@ -112,6 +115,9 @@ class App extends Component {
             <Route path="/about-chikamso" component={AboutChikamso} />
           </Switch>
         </Router>
+        <div className="foot">
+          <Footer />
+        </div>
       </div>
     );
   }

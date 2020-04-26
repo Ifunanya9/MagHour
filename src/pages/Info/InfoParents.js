@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Header from "../components/Header";
-import "./home.css";
-import smile from "../parents.jpg";
+import Header from "../../components/Header/Header";
+import "../Home/home.css";
+import smile from "../../img/parents.jpg";
 
 export default class InfoParents extends Component {
   render() {

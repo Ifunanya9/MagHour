@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Header from "../components/Header";
-import "./home.css";
-import smile from "../school.jpg";
+import Header from "../../components/Header/Header";
+import "../Home/home.css";
+import smile from "../../img/school.jpg";
 
 export default class InfoSchool extends Component {
   render() {

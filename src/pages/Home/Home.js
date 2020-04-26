@@ -1,16 +1,13 @@
 import React, { Component } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
-import { auth } from "../services/firebase";
+import { auth } from "../../services/firebase";
 import "./home.css";
-import smile from "../chatting.jpg";
+import smile from "../../img/chatting.jpg";
 
 export default class HomePage extends Component {
   render() {
     return (
       <div className="large">
-        <Header />
         <img className="smile" src={smile} alt="smiling" />
         <div className="dashboard start container">
           {auth().currentUser ? (
@@ -36,9 +33,6 @@ export default class HomePage extends Component {
                 </div>
               </div>
               <br />
-              <div className="foot">
-                <Footer></Footer>
-              </div>
             </section>
           ) : (
             <section>
