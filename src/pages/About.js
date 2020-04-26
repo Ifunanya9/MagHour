@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
-import smile from "../chatting.jpg";
+import smile from "../img/chatting.jpg";
 import boy from "../chikamso.jpg";
 import girl from "../ifunanyachi.jpg";
 import "./home.css";

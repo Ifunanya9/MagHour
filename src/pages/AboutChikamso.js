@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import boy from "../chikamso.jpg";
+import boy from "../img/chikamso.jpg";
 import "./home.css";
 
 export default class AboutChikamso extends Component {
