@@ -1,0 +1,259 @@
+[debug] [2020-04-30T20:49:35.661Z] ----------------------------------------------------------------------
+[debug] [2020-04-30T20:49:35.669Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2020-04-30T20:49:35.670Z] CLI Version:   8.2.0
+[debug] [2020-04-30T20:49:35.670Z] Platform:      win32
+[debug] [2020-04-30T20:49:35.670Z] Node Version:  v12.14.1
+[debug] [2020-04-30T20:49:35.673Z] Time:          Thu Apr 30 2020 21:49:35 GMT+0100 (British Summer Time)
+[debug] [2020-04-30T20:49:35.674Z] ----------------------------------------------------------------------
+[debug] [2020-04-30T20:49:35.674Z] 
+[debug] [2020-04-30T20:49:35.706Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-30T20:49:35.708Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\chika\Documents\MagHour
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using maghour-2e48d.
+[debug] [2020-04-30T20:49:47.624Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-04-30T20:49:47.625Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-04-30T20:49:47.867Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 30 Apr 2020 20:49:46 GMT","server":"scaffolding on HTTPServer2","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-30T20:49:47.882Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/maghour-2e48d  
+ 
+[debug] [2020-04-30T20:49:48.241Z] <<< HTTP RESPONSE 403 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Thu, 30 Apr 2020 20:49:47 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-30T20:49:48.241Z] <<< HTTP RESPONSE BODY {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2020-04-30T20:49:48.246Z] HTTP Error: 403, The caller does not have permission
+[debug] [2020-04-30T20:49:48.346Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at module.exports (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:38:12)
+    at Request._callback (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\lib\api.js:41:35)
+    at Request.self.callback (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:185:22)
+    at Request.emit (events.js:223:5)
+    at Request.EventEmitter.emit (domain.js:475:20)
+    at Request.<anonymous> (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1154:10)
+    at Request.emit (events.js:223:5)
+    at Request.EventEmitter.emit (domain.js:475:20)
+    at IncomingMessage.<anonymous> (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1076:12)
+    at Object.onceWrapper (events.js:312:28)
+    at IncomingMessage.emit (events.js:228:7)
+    at IncomingMessage.EventEmitter.emit (domain.js:475:20)
+    at endReadableNT (_stream_readable.js:1185:12)
+    at processTicksAndRejections (internal/process/task_queues.js:81:21)
+[error] 
+[error] Error: Failed to get Firebase project maghour-2e48d. Please make sure the project exists and your account has permission to access it.
+[debug] [2020-04-30T20:50:04.994Z] ----------------------------------------------------------------------
+[debug] [2020-04-30T20:50:04.999Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2020-04-30T20:50:05.000Z] CLI Version:   8.2.0
+[debug] [2020-04-30T20:50:05.000Z] Platform:      win32
+[debug] [2020-04-30T20:50:05.000Z] Node Version:  v12.14.1
+[debug] [2020-04-30T20:50:05.003Z] Time:          Thu Apr 30 2020 21:50:05 GMT+0100 (British Summer Time)
+[debug] [2020-04-30T20:50:05.004Z] ----------------------------------------------------------------------
+[debug] [2020-04-30T20:50:05.004Z] 
+[debug] [2020-04-30T20:50:05.031Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-30T20:50:05.032Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\chika\Documents\MagHour
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using maghour-2e48d.
+[debug] [2020-04-30T20:52:30.248Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/maghour-2e48d  
+ 
+[debug] [2020-04-30T20:52:30.749Z] <<< HTTP RESPONSE 403 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Thu, 30 Apr 2020 20:52:29 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-30T20:52:30.749Z] <<< HTTP RESPONSE BODY {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2020-04-30T20:52:30.752Z] HTTP Error: 403, The caller does not have permission
+[debug] [2020-04-30T20:52:30.846Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at module.exports (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:38:12)
+    at Request._callback (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\lib\api.js:41:35)
+    at Request.self.callback (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:185:22)
+    at Request.emit (events.js:223:5)
+    at Request.EventEmitter.emit (domain.js:475:20)
+    at Request.<anonymous> (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1154:10)
+    at Request.emit (events.js:223:5)
+    at Request.EventEmitter.emit (domain.js:475:20)
+    at IncomingMessage.<anonymous> (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1076:12)
+    at Object.onceWrapper (events.js:312:28)
+    at IncomingMessage.emit (events.js:228:7)
+    at IncomingMessage.EventEmitter.emit (domain.js:475:20)
+    at endReadableNT (_stream_readable.js:1185:12)
+    at processTicksAndRejections (internal/process/task_queues.js:81:21)
+[error] 
+[error] Error: Failed to get Firebase project maghour-2e48d. Please make sure the project exists and your account has permission to access it.
+[debug] [2020-04-30T20:52:39.306Z] ----------------------------------------------------------------------
+[debug] [2020-04-30T20:52:39.312Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2020-04-30T20:52:39.313Z] CLI Version:   8.2.0
+[debug] [2020-04-30T20:52:39.313Z] Platform:      win32
+[debug] [2020-04-30T20:52:39.313Z] Node Version:  v12.14.1
+[debug] [2020-04-30T20:52:39.316Z] Time:          Thu Apr 30 2020 21:52:39 GMT+0100 (British Summer Time)
+[debug] [2020-04-30T20:52:39.316Z] ----------------------------------------------------------------------
+[debug] [2020-04-30T20:52:39.316Z] 
+[debug] [2020-04-30T20:52:39.336Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-30T20:52:39.338Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\chika\Documents\MagHour
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using maghour-2e48d.
+[debug] [2020-04-30T20:52:49.428Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/maghour-2e48d  
+ 
+[debug] [2020-04-30T20:52:49.749Z] <<< HTTP RESPONSE 403 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Thu, 30 Apr 2020 20:52:48 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-30T20:52:49.749Z] <<< HTTP RESPONSE BODY {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2020-04-30T20:52:49.753Z] HTTP Error: 403, The caller does not have permission
+[debug] [2020-04-30T20:52:49.847Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at module.exports (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:38:12)
+    at Request._callback (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\lib\api.js:41:35)
+    at Request.self.callback (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:185:22)
+    at Request.emit (events.js:223:5)
+    at Request.EventEmitter.emit (domain.js:475:20)
+    at Request.<anonymous> (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1154:10)
+    at Request.emit (events.js:223:5)
+    at Request.EventEmitter.emit (domain.js:475:20)
+    at IncomingMessage.<anonymous> (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1076:12)
+    at Object.onceWrapper (events.js:312:28)
+    at IncomingMessage.emit (events.js:228:7)
+    at IncomingMessage.EventEmitter.emit (domain.js:475:20)
+    at endReadableNT (_stream_readable.js:1185:12)
+    at processTicksAndRejections (internal/process/task_queues.js:81:21)
+[error] 
+[error] Error: Failed to get Firebase project maghour-2e48d. Please make sure the project exists and your account has permission to access it.
+[debug] [2020-04-30T20:56:22.851Z] ----------------------------------------------------------------------
+[debug] [2020-04-30T20:56:22.856Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2020-04-30T20:56:22.857Z] CLI Version:   8.2.0
+[debug] [2020-04-30T20:56:22.857Z] Platform:      win32
+[debug] [2020-04-30T20:56:22.857Z] Node Version:  v12.14.1
+[debug] [2020-04-30T20:56:22.861Z] Time:          Thu Apr 30 2020 21:56:22 GMT+0100 (British Summer Time)
+[debug] [2020-04-30T20:56:22.862Z] ----------------------------------------------------------------------
+[debug] [2020-04-30T20:56:22.862Z] 
+[debug] [2020-04-30T20:56:22.883Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-30T20:56:22.884Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\chika\Documents\MagHour
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using maghour-2e48d.
+[debug] [2020-04-30T20:56:32.380Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/maghour-2e48d  
+ 
+[debug] [2020-04-30T20:56:33.077Z] <<< HTTP RESPONSE 403 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Thu, 30 Apr 2020 20:56:31 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-30T20:56:33.078Z] <<< HTTP RESPONSE BODY {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2020-04-30T20:56:33.081Z] HTTP Error: 403, The caller does not have permission
+[debug] [2020-04-30T20:56:33.314Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at module.exports (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:38:12)
+    at Request._callback (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\lib\api.js:41:35)
+    at Request.self.callback (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:185:22)
+    at Request.emit (events.js:223:5)
+    at Request.EventEmitter.emit (domain.js:475:20)
+    at Request.<anonymous> (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1154:10)
+    at Request.emit (events.js:223:5)
+    at Request.EventEmitter.emit (domain.js:475:20)
+    at IncomingMessage.<anonymous> (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1076:12)
+    at Object.onceWrapper (events.js:312:28)
+    at IncomingMessage.emit (events.js:228:7)
+    at IncomingMessage.EventEmitter.emit (domain.js:475:20)
+    at endReadableNT (_stream_readable.js:1185:12)
+    at processTicksAndRejections (internal/process/task_queues.js:81:21)
+[error] 
+[error] Error: Failed to get Firebase project maghour-2e48d. Please make sure the project exists and your account has permission to access it.
+[debug] [2020-04-30T20:58:05.549Z] ----------------------------------------------------------------------
+[debug] [2020-04-30T20:58:05.556Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2020-04-30T20:58:05.557Z] CLI Version:   8.2.0
+[debug] [2020-04-30T20:58:05.558Z] Platform:      win32
+[debug] [2020-04-30T20:58:05.558Z] Node Version:  v12.14.1
+[debug] [2020-04-30T20:58:05.561Z] Time:          Thu Apr 30 2020 21:58:05 GMT+0100 (British Summer Time)
+[debug] [2020-04-30T20:58:05.561Z] ----------------------------------------------------------------------
+[debug] [2020-04-30T20:58:05.561Z] 
+[debug] [2020-04-30T20:58:05.580Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-30T20:58:05.582Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\chika\Documents\MagHour
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using maghour-2e48d.
+[debug] [2020-04-30T20:58:10.263Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/maghour-2e48d  
+ 
+[debug] [2020-04-30T20:58:11.300Z] <<< HTTP RESPONSE 403 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Thu, 30 Apr 2020 20:58:10 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-30T20:58:11.300Z] <<< HTTP RESPONSE BODY {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2020-04-30T20:58:11.304Z] HTTP Error: 403, The caller does not have permission
+[debug] [2020-04-30T20:58:11.645Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at module.exports (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:38:12)
+    at Request._callback (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\lib\api.js:41:35)
+    at Request.self.callback (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:185:22)
+    at Request.emit (events.js:223:5)
+    at Request.EventEmitter.emit (domain.js:475:20)
+    at Request.<anonymous> (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1154:10)
+    at Request.emit (events.js:223:5)
+    at Request.EventEmitter.emit (domain.js:475:20)
+    at IncomingMessage.<anonymous> (C:\Users\chika\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1076:12)
+    at Object.onceWrapper (events.js:312:28)
+    at IncomingMessage.emit (events.js:228:7)
+    at IncomingMessage.EventEmitter.emit (domain.js:475:20)
+    at endReadableNT (_stream_readable.js:1185:12)
+    at processTicksAndRejections (internal/process/task_queues.js:81:21)
+[error] 
+[error] Error: Failed to get Firebase project maghour-2e48d. Please make sure the project exists and your account has permission to access it.

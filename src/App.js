@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import Search from '../src/pages/Search/search'
 import {
   Route,
   BrowserRouter as Router,
@@ -115,6 +116,7 @@ class App extends Component {
             <Route path="/about-ifunanyachi" component={AboutIfunanyachi} />
             <Route path="/about-chikamso" component={AboutChikamso} />
             <Route path="/account" component={Account} />
+            <Route path="/search" component={Search} />
           </Switch>
         </Router>
         <div className="foot">

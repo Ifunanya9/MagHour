@@ -5,7 +5,7 @@ export default class Profile extends Component {
     render(){
     return (
         <div>
-            <Link to="DeletePost">Delete sPost</Link>
+            <Link to="DeletePost">Delete Post</Link>
             <Link to="CreatePost">Create Post</Link>
             <p>Its time for Profile</p>
         </div>

@@ -3,6 +3,7 @@ import { auth } from "../../services/firebase";
 import logo from "../../img/starter.png";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import "./nav.css";
+import Search from '../../pages/Search/search'
 
 const Header = () => {
   return (
@@ -35,6 +36,11 @@ const Header = () => {
                   <Nav.Item>
                     <Nav.Link href="/chat" eventKey="/chat">
                       School
+                    </Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link href="/search" eventKey="/search">
+                      Search
                     </Nav.Link>
                   </Nav.Item>
                   <NavDropdown title="Profile" id="basic-nav-dropdown">
