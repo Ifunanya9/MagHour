@@ -1,7 +1,7 @@
 import React from "react";
 import { auth } from "../../services/firebase";
 import logo from "../../img/starter.png";
-import { Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Nav, Navbar, NavDropdown, NavLink } from "react-bootstrap";
 import "./nav.css";
 import Search from '../../pages/Search/search'
 
@@ -38,6 +38,7 @@ const Header = () => {
                       School
                     </Nav.Link>
                   </Nav.Item>
+                  {/* <li><NavLink to='/' className="btn btn-floating pink lighten-1">{this.props.users.usersId}</NavLink></li> */}
                   <Nav.Item>
                     <Nav.Link href="/search" eventKey="/search">
                       Search

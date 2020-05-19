@@ -68,6 +68,32 @@ export default class Chat extends Component {
       this.setState({ writeError: error.message });
     }
   }
+async users(event){
+  event.preventDefault();
+    await db.ref('users').push({
+      usersFirstName: this.state.usersFirstName,
+      usersLastName:this.state.usersLastName,
+      usersInitials:this.state.usersInitials,
+      usersDescription:this.state.usersDescription,
+      usersDate:this.state.usersDate
+    })
+}
+
+async school(event){
+  event.preventDefault();
+    await db.ref('users').push({
+      schoolName: this.state.schoolName,
+      schoolId:this.state.schoolId
+    })
+}
+
+async primary(event){
+  event.preventDefault();
+    await db.ref('primary').push({
+      usersFirstName: this.state.pimaryGrade,
+      usersLastName:this.state.schoolId
+    })
+}
 
   // async handleDelete(event) {
   //   try {
