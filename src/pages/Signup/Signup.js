@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Header from "../components/Header";
-import { signin, signInWithGoogle, signInWithGitHub } from "../helpers/auth";
-import "./signin.css";
-import smile from "../chatting.jpg";
+import Header from "../../components/Header";
+import { signup, signInWithGoogle, signInWithGitHub } from "../../helpers/auth";
+import "./signup.css";
+import smile from "../../img/chatting.jpg";
 
-export default class Login extends Component {
+export default class SignUp extends Component {
   constructor() {
     super();
     this.state = {
       error: null,
       email: "",
-      password: ""
+      password: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,7 +21,7 @@ export default class Login extends Component {
 
   handleChange(event) {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   }
 
@@ -29,7 +29,7 @@ export default class Login extends Component {
     event.preventDefault();
     this.setState({ error: "" });
     try {
-      await signin(this.state.email, this.state.password);
+      await signup(this.state.email, this.state.password);
     } catch (error) {
       this.setState({ error: error.message });
     }
@@ -47,6 +47,7 @@ export default class Login extends Component {
     try {
       await signInWithGitHub();
     } catch (error) {
+      console.log(error);
       this.setState({ error: error.message });
     }
   }
@@ -58,21 +59,14 @@ export default class Login extends Component {
         <img className="smile" src={smile} alt="smiling" />
         <br />
         <br />
-        <form
-          className="mt-5 py-5 px-5"
-          autoComplete="off"
-          onSubmit={this.handleSubmit}
-        >
+        <form className="mt-5 py-5 px-5" onSubmit={this.handleSubmit}>
           <h1>
-            <div className="title-text">Login to</div>
+            <div className="title-text">Sign Up to </div>
             <Link className="title ml-2" to="/">
-              {" "}
               MagHour
             </Link>
           </h1>
-          <p className="lead">
-            Fill in the form below to login to your account.
-          </p>
+          <p className="lead">Fill in the form below to create an account.</p>
           <div className="form-group">
             <input
               className="form-control"
@@ -81,7 +75,7 @@ export default class Login extends Component {
               type="email"
               onChange={this.handleChange}
               value={this.state.email}
-            />
+            ></input>
           </div>
           <div className="form-group">
             <input
@@ -91,40 +85,43 @@ export default class Login extends Component {
               onChange={this.handleChange}
               value={this.state.password}
               type="password"
-            />
+            ></input>
           </div>
+
           <div className="form-group">
             {this.state.error ? (
               <p className="text-danger">{this.state.error}</p>
             ) : null}
             <button className="btn btn-primary px-5" type="submit">
-              Login
+              Sign up
             </button>
           </div>
-          <p className="also">You can also log in with any of these services</p>
+          <p className="also">
+            You can also sign up with any of these services
+          </p>
           <div className="another-google">
             <button
-              className="btn btn-danger mr-2"
+              className="btn btn-danger mr-2 google"
               type="button"
               onClick={this.googleSignIn}
             >
-              Sign in with Google
+              Sign up with Google
             </button>
           </div>
           <div className="another-github">
             <button
-              className="btn btn-secondary"
+              className="btn btn-secondary github"
               type="button"
               onClick={this.githubSignIn}
             >
-              Sign in with GitHub
+              Sign up with GitHub
             </button>
           </div>
-          <hr />
+          <hr></hr>
           <p className="already">
-            Don't have an account?{" "}
-            <Link className="move" to="/signup">
-              Sign up
+            Already have an account?{" "}
+            <Link className="move" to="/login">
+              Login
             </Link>
           </p>
         </form>

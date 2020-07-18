@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Header from "../components/Header";
-import { auth } from "../services/firebase";
-import { db } from "../services/firebase";
+import Header from "../../components/Header";
+import { auth } from "../../services/firebase";
+import { db } from "../../services/firebase";
 
 export default class Chat extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ export default class Chat extends Component {
       content: "",
       readError: null,
       writeError: null,
-      loadingChats: false
+      loadingChats: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,12 +24,12 @@ export default class Chat extends Component {
     this.setState({ readError: null, loadingChats: true });
     const chatArea = this.myRef.current;
     try {
-      db.ref("chats").on("value", snapshot => {
+      db.ref("chats").on("value", (snapshot) => {
         let chats = [];
-        snapshot.forEach(snap => {
+        snapshot.forEach((snap) => {
           chats.push(snap.val());
         });
-        chats.sort(function(a, b) {
+        chats.sort(function (a, b) {
           return a.timestamp - b.timestamp;
         });
         this.setState({ chats });
@@ -43,7 +43,7 @@ export default class Chat extends Component {
 
   handleChange(event) {
     this.setState({
-      content: event.target.value
+      content: event.target.value,
     });
   }
 
@@ -55,7 +55,7 @@ export default class Chat extends Component {
       await db.ref("chats").push({
         content: this.state.content,
         timestamp: Date.now(),
-        uid: this.state.user.uid
+        uid: this.state.user.uid,
       });
       this.setState({ content: "" });
       chatArea.scrollBy(0, chatArea.scrollHeight);
@@ -67,8 +67,9 @@ export default class Chat extends Component {
   formatTime(timestamp) {
     const d = new Date(timestamp);
     const time = `Made By:${this.state.user.email} 
-    ${d.getDate()}/${d.getMonth() +
-      1}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()} `;
+    ${d.getDate()}/${
+      d.getMonth() + 1
+    }/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()} `;
     return time;
   }
 
@@ -88,9 +89,11 @@ export default class Chat extends Component {
           )}
           {/* chat area */}
 
-          <Link className="link" to="/delete_post"><h1>...</h1></Link>
+          <Link className="link" to="/delete_post">
+            <h1>...</h1>
+          </Link>
 
-          {this.state.chats.map(chat => {
+          {this.state.chats.map((chat) => {
             return (
               <div className="do">
                 <p
@@ -113,25 +116,24 @@ export default class Chat extends Component {
         </div>
 
         <form onSubmit={this.handleSubmit} className="mx-3">
-            <textarea
-              className="form-control"
-              name="content"
-              onChange={this.handleChange}
-              value={this.state.content}
-            >
-            </textarea>
+          <textarea
+            className="form-control"
+            name="content"
+            onChange={this.handleChange}
+            value={this.state.content}
+          ></textarea>
           {this.state.error ? (
             <p className="text-danger">{this.state.error}</p>
           ) : null}
           {this.state.content ? (
             this.state.content !== " " ? (
-            <button
-              type="submit"
-              className="btn btn-submit px-5 mt-4 button chat-bubble"
-            >
-              Send
-            </button>
-            ):null
+              <button
+                type="submit"
+                className="btn btn-submit px-5 mt-4 button chat-bubble"
+              >
+                Send
+              </button>
+            ) : null
           ) : null}
         </form>
         <div className="py-5 mx-3">
