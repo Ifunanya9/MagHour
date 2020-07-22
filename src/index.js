@@ -13,8 +13,11 @@ import {
   getFirebase,
   isLoaded,
 } from "react-redux-firebase";
-import { createFirestoreInstance } from "redux-firestore";
-import { getFirestore } from "redux-firestore";
+import {
+  getFirestore,
+  createFirestoreInstance,
+  reduxFirestore,
+} from "redux-firestore";
 import fbConfig from "./services/firebase";
 
 const initialState = {};
@@ -23,7 +26,8 @@ const store = createStore(
   rootReducer,
   initialState,
   compose(
-    applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore }))
+    applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
+    reduxFirestore(fbConfig)
     // reactReduxFirebase({useFirestoreForProfile: true})
   )
 );
@@ -39,8 +43,7 @@ const fbProps = {
   config: rrfConfig,
   dispatch: store.dispatch,
   createFirestoreInstance,
-  RealtimeDB: fbConfig,
-  // <- needed if using firestore
+  RealtimeDB: fbConfig, // <- needed if using firestore
 };
 
 const AuthIsLoaded = ({ children }) => {

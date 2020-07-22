@@ -1,61 +1,41 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Header from "../../components/Header";
-import { signup, signInWithGoogle, signInWithGitHub } from "../../helpers/auth";
+import { signUp } from "../../store/actions/authActions";
 import "./signup.css";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import smile from "../../img/chatting.jpg";
 
-export default class SignUp extends Component {
-  constructor() {
-    super();
-    this.state = {
-      error: null,
-      email: "",
-      password: "",
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.googleSignIn = this.googleSignIn.bind(this);
-    this.githubSignIn = this.githubSignIn.bind(this);
-  }
+class SignUp extends Component {
+  state = {
+    error: null,
+    email: "",
+    password: "",
+    userName: "",
+    firstName: "",
+    lastName: "",
+  };
 
-  handleChange(event) {
+  handleChange = (e) => {
     this.setState({
-      [event.target.name]: event.target.value,
+      [e.target.id]: e.target.value,
     });
-  }
+  };
 
-  async handleSubmit(event) {
-    event.preventDefault();
-    this.setState({ error: "" });
+  handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      await signup(this.state.email, this.state.password);
+      this.props.signUp(this.state);
     } catch (error) {
       this.setState({ error: error.message });
     }
-  }
-
-  async googleSignIn() {
-    try {
-      await signInWithGoogle();
-    } catch (error) {
-      this.setState({ error: error.message });
-    }
-  }
-
-  async githubSignIn() {
-    try {
-      await signInWithGitHub();
-    } catch (error) {
-      console.log(error);
-      this.setState({ error: error.message });
-    }
-  }
+  };
 
   render() {
+    const { auth } = this.props;
+    if (auth.uid) return <Redirect to="/" />;
     return (
       <div className="container">
-        <Header></Header>
         <img className="smile" src={smile} alt="smiling" />
         <br />
         <br />
@@ -70,9 +50,43 @@ export default class SignUp extends Component {
           <div className="form-group">
             <input
               className="form-control"
+              placeholder="Username"
+              name="username"
+              id="userName"
+              type="text"
+              onChange={this.handleChange}
+              value={this.state.userName}
+            ></input>
+          </div>
+          <div className="form-group">
+            <input
+              className="form-control"
+              placeholder="Firstname"
+              name="firstname"
+              id="firstName"
+              type="text"
+              onChange={this.handleChange}
+              value={this.state.firstName}
+            ></input>
+          </div>
+          <div className="form-group">
+            <input
+              className="form-control"
+              placeholder="Lastname"
+              name="lastname"
+              type="text"
+              id="lastName"
+              onChange={this.handleChange}
+              value={this.state.lastName}
+            ></input>
+          </div>
+          <div className="form-group">
+            <input
+              className="form-control"
               placeholder="Email"
               name="email"
               type="email"
+              id="email"
               onChange={this.handleChange}
               value={this.state.email}
             ></input>
@@ -82,6 +96,7 @@ export default class SignUp extends Component {
               className="form-control"
               placeholder="Password"
               name="password"
+              id="password"
               onChange={this.handleChange}
               value={this.state.password}
               type="password"
@@ -92,29 +107,10 @@ export default class SignUp extends Component {
             {this.state.error ? (
               <p className="text-danger">{this.state.error}</p>
             ) : null}
+          </div>
+          <div className="form-group">
             <button className="btn btn-primary px-5" type="submit">
               Sign up
-            </button>
-          </div>
-          <p className="also">
-            You can also sign up with any of these services
-          </p>
-          <div className="another-google">
-            <button
-              className="btn btn-danger mr-2 google"
-              type="button"
-              onClick={this.googleSignIn}
-            >
-              Sign up with Google
-            </button>
-          </div>
-          <div className="another-github">
-            <button
-              className="btn btn-secondary github"
-              type="button"
-              onClick={this.githubSignIn}
-            >
-              Sign up with GitHub
             </button>
           </div>
           <hr></hr>
@@ -129,3 +125,18 @@ export default class SignUp extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    authError: state.auth.authError,
+    auth: state.firebase.auth,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signUp: (newUser) => dispatch(signUp(newUser)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

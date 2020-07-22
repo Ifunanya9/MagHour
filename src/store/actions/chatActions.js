@@ -7,9 +7,8 @@ export const createChat = (chat) => {
     firestore
       .collection("chats")
       .add({
-        ...chat,
-        authorFirstName: profile.firstName,
-        authorLastName: profile.lastName,
+        content: chat.content,
+        authorUserName: profile.username,
         authorId: authorId,
         createdAt: new Date(),
       })

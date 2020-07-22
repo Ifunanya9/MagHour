@@ -1,146 +1,128 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Header from "../../components/Header";
-import { auth } from "../../services/firebase";
-import { db } from "../../services/firebase";
+import { Card } from "react-bootstrap";
+import { connect } from "react-redux";
+import "./chat.css";
+import moment from "moment";
+import { compose } from "redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { createChat } from "../../store/actions/chatActions";
+import { Redirect } from "react-router-dom";
+import ReactEmoji from "react-emoji";
 
-export default class Chat extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: auth().currentUser,
-      chats: [],
-      content: "",
-      readError: null,
-      writeError: null,
-      loadingChats: false,
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.myRef = React.createRef();
-  }
+class Chat extends Component {
+  state = {
+    content: "",
+    error: "",
+  };
 
-  async componentDidMount() {
-    this.setState({ readError: null, loadingChats: true });
-    const chatArea = this.myRef.current;
-    try {
-      db.ref("chats").on("value", (snapshot) => {
-        let chats = [];
-        snapshot.forEach((snap) => {
-          chats.push(snap.val());
-        });
-        chats.sort(function (a, b) {
-          return a.timestamp - b.timestamp;
-        });
-        this.setState({ chats });
-        chatArea.scrollBy(0, chatArea.scrollHeight);
-        this.setState({ loadingChats: false });
-      });
-    } catch (error) {
-      this.setState({ readError: error.message, loadingChats: false });
-    }
-  }
-
-  handleChange(event) {
+  handleChange = (e) => {
     this.setState({
-      content: event.target.value,
+      [e.target.id]: e.target.value,
     });
-  }
+  };
 
-  async handleSubmit(event) {
-    event.preventDefault();
-    this.setState({ writeError: null });
-    const chatArea = this.myRef.current;
+  handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      await db.ref("chats").push({
-        content: this.state.content,
-        timestamp: Date.now(),
-        uid: this.state.user.uid,
-      });
-      this.setState({ content: "" });
-      chatArea.scrollBy(0, chatArea.scrollHeight);
+      await this.props.createChat(this.state);
     } catch (error) {
-      this.setState({ writeError: error.message });
+      this.setState({ error: error.message });
     }
-  }
+  };
 
-  formatTime(timestamp) {
-    const d = new Date(timestamp);
-    const time = `Made By:${this.state.user.email} 
-    ${d.getDate()}/${
-      d.getMonth() + 1
-    }/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()} `;
-    return time;
-  }
+  // getUid(userid){
+  //   this.setState({uid: userid});
+  // }
 
   render() {
+    const { chats, auth, profile } = this.props;
+    if (!auth.uid) return <Redirect to="/login" />;
     return (
-      <div className="container">
+      <div>
         <Header />
         <br />
-        <div className="chat-area" ref={this.myRef}>
-          {/* loading indicator */}
-          {this.state.loadingChats ? (
-            <div className="spinner-border text-success" role="status">
-              <span className="sr-only">Loading...</span>
-            </div>
-          ) : (
-            ""
-          )}
-          {/* chat area */}
+        <div className="container">
+          <div className="chat-area" ref={this.myRef}>
+            {chats &&
+              chats.map((chat) => {
+                return (
+                  <Card
+                    className={
+                      "chat-bubble text-center " +
+                      (auth.uid === chat.authorId ? "current-user" : "")
+                    }
+                    style={{ width: "18rem" }}
+                  >
+                    <Card.Header>
+                      <strong>{chat.authorUserName}</strong>
+                      <br />
+                      <strong>
+                        {moment(chat.createdAt.toDate()).format(
+                          "MMMM Do YYYY, h:mm a"
+                        )}
+                      </strong>
+                    </Card.Header>
+                    <Card.Body>
+                      <Card.Text>{ReactEmoji.emojify(chat.content)}</Card.Text>
+                    </Card.Body>
+                  </Card>
+                );
+              })}
+          </div>
+          <div className="text">
+            <label htmlFor="text">Chat Here!</label>
+            <form onSubmit={this.handleSubmit} className="mx-3">
+              <textarea
+                className="form-control chat-bubble chat-form"
+                name="content"
+                onChange={this.handleChange}
+                value={this.state.content}
+                id="content"
+              ></textarea>
 
-          <Link className="link" to="/delete_post">
-            <h1>...</h1>
-          </Link>
-
-          {this.state.chats.map((chat) => {
-            return (
-              <div className="do">
-                <p
-                  key={chat.timestamp}
-                  className={
-                    "chat-bubble " +
-                    (this.state.user.uid === chat.uid ? "current-user" : "")
-                  }
-                >
-                  {chat.content}
-
-                  <br />
-                  <span className="chat-time float-right">
-                    {this.formatTime(chat.timestamp)}
-                  </span>
-                </p>
-              </div>
-            );
-          })}
-        </div>
-
-        <form onSubmit={this.handleSubmit} className="mx-3">
-          <textarea
-            className="form-control"
-            name="content"
-            onChange={this.handleChange}
-            value={this.state.content}
-          ></textarea>
-          {this.state.error ? (
-            <p className="text-danger">{this.state.error}</p>
-          ) : null}
-          {this.state.content ? (
-            this.state.content !== " " ? (
-              <button
-                type="submit"
-                className="btn btn-submit px-5 mt-4 button chat-bubble"
-              >
-                Send
-              </button>
-            ) : null
-          ) : null}
-        </form>
-        <div className="py-5 mx-3">
-          Login in as:{" "}
-          <strong className="text-info">{this.state.user.email}</strong>
+              {this.state.error ? (
+                <p className="text-danger">{this.state.error}</p>
+              ) : null}
+              {this.state.content ? (
+                this.state.content !== " " ? (
+                  <button
+                    type="submit"
+                    className="btn btn-submit px-5 mt-4 button chat-bubble"
+                  >
+                    Send
+                  </button>
+                ) : null
+              ) : null}
+            </form>
+          </div>
+          <div className="py-5 mx-3 text">
+            Logged in as:{" "}
+            <strong className="text-info">{profile.username}</strong>
+          </div>
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  console.log(state);
+  const chats = state.firestore.ordered.chats;
+  return {
+    chats: chats,
+    auth: state.firebase.auth,
+    profile: state.firebase.profile,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createChat: (chat) => dispatch(createChat(chat)),
+  };
+};
+
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  firestoreConnect([{ collection: "chats", orderBy: ["createdAt", "asc"] }])
+)(Chat);

@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Header from "../../components/Header";
 import { connect } from "react-redux";
-import { signin, signInWithGoogle, signInWithGitHub } from "../../helpers/auth";
+import { signInWithGoogle, signInWithGitHub } from "../../helpers/auth";
+import { signIn } from "../../store/actions/authActions";
 import { Redirect } from "react-router-dom";
 import "./signin.css";
 import smile from "../../img/chatting.jpg";
 
-export default class Login extends Component {
+class Login extends Component {
   state = {
+    error: null,
     email: "",
     password: "",
   };
@@ -17,34 +18,128 @@ export default class Login extends Component {
       [e.target.id]: e.target.value,
     });
   };
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
-    this.props.signIn(this.state);
+    try {
+      await this.props.signIn(this.state);
+    } catch (error) {
+      this.setState({ error: error.message });
+    }
   };
+
+  googleSignIn = async () => {
+    try {
+      await signInWithGoogle();
+    } catch (error) {
+      this.setState({ error: error.message });
+    }
+  };
+
+  githubSignIn = async () => {
+    try {
+      await signInWithGitHub();
+    } catch (error) {
+      console.log(error);
+      this.setState({ error: error.message });
+    }
+  };
+
   render() {
-    const { authError, auth } = this.props;
+    const { auth } = this.props;
     if (auth.uid) return <Redirect to="/" />;
     return (
       <div className="container">
-        <form className="white" onSubmit={this.handleSubmit}>
-          <h5 className="grey-text text-darken-3">Sign In</h5>
+        <img className="smile" src={smile} alt="smiling" />
+        <br />
+        <br />
+        <form className="mt-5 py-5 px-5" onSubmit={this.handleSubmit}>
+          <h1>
+            <div className="title-text">Sign Up to </div>
+            <Link className="title ml-2" to="/">
+              MagHour
+            </Link>
+          </h1>
+          <p className="lead">Fill in the form below to create an account.</p>
+          <div className="form-group">
+            <input
+              className="form-control"
+              placeholder="Email"
+              name="email"
+              type="email"
+              id="email"
+              onChange={this.handleChange}
+              value={this.state.email}
+            ></input>
+          </div>
+          <div className="form-group">
+            <input
+              className="form-control"
+              placeholder="Password"
+              name="password"
+              id="password"
+              onChange={this.handleChange}
+              value={this.state.password}
+              type="password"
+            ></input>
+          </div>
 
-          <div className="input-field">
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" onChange={this.handleChange} />
+          <div className="form-group">
+            {this.state.error ? (
+              <div>
+                <p className="text-danger">{this.state.error}</p>
+              </div>
+            ) : null}
           </div>
-          <div className="input-field">
-            <label htmlFor="password">Password</label>
-            <input type="password" id="password" onChange={this.handleChange} />
+          <div className="form-group">
+            <button className="btn btn-primary px-5" type="submit">
+              Sign up
+            </button>
           </div>
-          <div className="input-field">
-            <div className="red-text center red lighten-5 fail">
-              {authError ? <p>{authError}</p> : null}
-            </div>
-            <button className="btn pink lighten-1 z-depth-0">Login</button>
+          <p className="also">
+            You can also sign up with any of these services
+          </p>
+          <div className="another-google">
+            <button
+              className="btn btn-danger mr-2 google"
+              type="button"
+              onClick={this.googleSignIn}
+            >
+              Sign up with Google
+            </button>
           </div>
+          <div className="another-github">
+            <button
+              className="btn btn-secondary github"
+              type="button"
+              onClick={this.githubSignIn}
+            >
+              Sign up with GitHub
+            </button>
+          </div>
+          <hr></hr>
+          <p className="already">
+            Don't have an account?{" "}
+            <Link className="move" to="/signup">
+              Signup
+            </Link>
+          </p>
         </form>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    authError: state.auth.authError,
+    auth: state.firebase.auth,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signIn: (creds) => dispatch(signIn(creds)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
