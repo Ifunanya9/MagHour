@@ -19,7 +19,7 @@ class App extends Component {
       //   </div>
       // ) : (
       <Router>
-        <div>
+        <div className="App">
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />

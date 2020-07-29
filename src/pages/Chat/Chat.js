@@ -1,14 +1,12 @@
 import React, { Component } from "react";
-import Header from "../../components/Header";
-import { Card } from "react-bootstrap";
 import { connect } from "react-redux";
+import ScrollToBottom from "react-scroll-to-bottom";
 import "./chat.css";
-import moment from "moment";
+import ChatSummary from "./ChatSummary";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { createChat } from "../../store/actions/chatActions";
 import { Redirect } from "react-router-dom";
-import ReactEmoji from "react-emoji";
 
 class Chat extends Component {
   state = {
@@ -40,36 +38,16 @@ class Chat extends Component {
     if (!auth.uid) return <Redirect to="/login" />;
     return (
       <div>
-        <Header />
         <br />
         <div className="container">
-          <div className="chat-area" ref={this.myRef}>
-            {chats &&
-              chats.map((chat) => {
-                return (
-                  <Card
-                    className={
-                      "chat-bubble text-center " +
-                      (auth.uid === chat.authorId ? "current-user" : "")
-                    }
-                    style={{ width: "18rem" }}
-                  >
-                    <Card.Header>
-                      <strong>{chat.authorUserName}</strong>
-                      <br />
-                      <strong>
-                        {moment(chat.createdAt.toDate()).format(
-                          "MMMM Do YYYY, h:mm a"
-                        )}
-                      </strong>
-                    </Card.Header>
-                    <Card.Body>
-                      <Card.Text>{ReactEmoji.emojify(chat.content)}</Card.Text>
-                    </Card.Body>
-                  </Card>
-                );
-              })}
-          </div>
+          <ScrollToBottom className="messages">
+            <div className="chat-area" ref={this.myRef}>
+              {chats &&
+                chats.map((chat) => {
+                  return <ChatSummary chat={chat} auth={auth} />;
+                })}
+            </div>
+          </ScrollToBottom>
           <div className="text">
             <label htmlFor="text">Chat Here!</label>
             <form onSubmit={this.handleSubmit} className="mx-3">

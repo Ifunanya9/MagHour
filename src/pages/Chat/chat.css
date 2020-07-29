@@ -107,4 +107,6 @@ body {
 }
 *::-webkit-scrollbar-thumb:hover {
   background: #555;
+
+  transition: all 5s ease-in-out;
 }

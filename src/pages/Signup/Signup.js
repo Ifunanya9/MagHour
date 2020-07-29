@@ -4,7 +4,7 @@ import { signUp } from "../../store/actions/authActions";
 import "./signup.css";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import smile from "../../img/chatting.jpg";
+import { Paper } from "@material-ui/core";
 
 class SignUp extends Component {
   state = {
@@ -14,6 +14,7 @@ class SignUp extends Component {
     userName: "",
     firstName: "",
     lastName: "",
+    confirmPassword: "",
   };
 
   handleChange = (e) => {
@@ -24,10 +25,17 @@ class SignUp extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      this.props.signUp(this.state);
-    } catch (error) {
-      this.setState({ error: error.message });
+    if (this.state.confirmPassword !== this.state.password) {
+      const err = "Passwords do not match";
+      this.setState({
+        error: err,
+      });
+    } else {
+      try {
+        this.props.signUp(this.state);
+      } catch (error) {
+        this.setState({ error: error.message });
+      }
     }
   };
 
@@ -35,92 +43,181 @@ class SignUp extends Component {
     const { auth } = this.props;
     if (auth.uid) return <Redirect to="/" />;
     return (
-      <div className="container">
-        <img className="smile" src={smile} alt="smiling" />
+      <div>
         <br />
         <br />
-        <form className="mt-5 py-5 px-5" onSubmit={this.handleSubmit}>
-          <h1>
-            <div className="title-text">Sign Up to </div>
-            <Link className="title ml-2" to="/">
-              MagHour
-            </Link>
-          </h1>
-          <p className="lead">Fill in the form below to create an account.</p>
-          <div className="form-group">
-            <input
-              className="form-control"
-              placeholder="Username"
-              name="username"
-              id="userName"
-              type="text"
-              onChange={this.handleChange}
-              value={this.state.userName}
-            ></input>
-          </div>
-          <div className="form-group">
-            <input
-              className="form-control"
-              placeholder="Firstname"
-              name="firstname"
-              id="firstName"
-              type="text"
-              onChange={this.handleChange}
-              value={this.state.firstName}
-            ></input>
-          </div>
-          <div className="form-group">
-            <input
-              className="form-control"
-              placeholder="Lastname"
-              name="lastname"
-              type="text"
-              id="lastName"
-              onChange={this.handleChange}
-              value={this.state.lastName}
-            ></input>
-          </div>
-          <div className="form-group">
-            <input
-              className="form-control"
-              placeholder="Email"
-              name="email"
-              type="email"
-              id="email"
-              onChange={this.handleChange}
-              value={this.state.email}
-            ></input>
-          </div>
-          <div className="form-group">
-            <input
-              className="form-control"
-              placeholder="Password"
-              name="password"
-              id="password"
-              onChange={this.handleChange}
-              value={this.state.password}
-              type="password"
-            ></input>
-          </div>
+        <div className="jumbotron-codelines text-center center text-dark">
+          <div className="mx-auto magin">
+            <Paper className="py-4 px-4 px-md-3 px-lg-4">
+              <form
+                className="mt-5 py-5 px-5 home-hero-signup text-gray-dark js-signup-form js-signup-form-submit"
+                autoComplete="off"
+                action="/join"
+                method="post"
+                acceptCharset="UTF-8"
+              >
+                <h1>
+                  <div className="title">Sign Up to </div>
+                  <Link className="title ml-2" to="/">
+                    MagHour
+                  </Link>
+                </h1>
+                <br />
+                <div className="mt-0">
+                  <label className="form-label h6" htmlFor="userName">
+                    Username
+                  </label>
+                  <input
+                    required
+                    autoFocus
+                    type="text"
+                    name="userName"
+                    id="userName"
+                    className="form-control form-control-lg input-block"
+                    autocomplete="off"
+                    spellCheck="true"
+                    onChange={this.handleChange}
+                    aria-describedby="input-check-3834 "
+                    value={this.state.userName}
+                  />
+                </div>
+                <div className="mt-0">
+                  <label className="form-label h6" htmlFor="firstName">
+                    First Name
+                  </label>
+                  <input
+                    required
+                    type="text"
+                    name="firstName"
+                    id="firstName"
+                    className="form-control form-control-lg input-block"
+                    autocomplete="off"
+                    spellCheck="true"
+                    onChange={this.handleChange}
+                    aria-describedby="input-check-3834 "
+                    value={this.state.firstName}
+                  />
+                </div>
+                <div className="mt-0">
+                  <label className="form-label h6" htmlFor="lastName">
+                    Last Name
+                  </label>
+                  <input
+                    required
+                    type="text"
+                    name="lastName"
+                    id="lastName"
+                    className="form-control form-control-lg input-block"
+                    autocomplete="off"
+                    spellCheck="true"
+                    onChange={this.handleChange}
+                    aria-describedby="input-check-3834 "
+                    value={this.state.lastName}
+                  />
+                </div>
+                <div className="mt-0">
+                  <label className="form-label h6" htmlFor="email">
+                    Email
+                  </label>
+                  <input
+                    required
+                    type="email"
+                    name="email"
+                    id="email"
+                    className="form-control form-control-lg input-block"
+                    autocomplete="off"
+                    spellCheck="true"
+                    onChange={this.handleChange}
+                    aria-describedby="input-check-3834 "
+                    value={this.state.email}
+                  />
+                </div>
+                <div className="mt-0">
+                  <label className="form-label h6" htmlFor="password">
+                    Password
+                  </label>
+                  <input
+                    required
+                    type="password"
+                    name="password"
+                    id="password"
+                    className="form-control form-control-lg input-block"
+                    autocomplete="off"
+                    spellCheck="true"
+                    onChange={this.handleChange}
+                    aria-describedby="input-check-3834 "
+                    value={this.state.password}
+                  />
+                </div>
+                <div className="mt-0">
+                  <label className="form-label h6" htmlFor="confirmPassword">
+                    Confirm Password
+                  </label>
+                  <input
+                    required
+                    type="password"
+                    name="confirmPassword"
+                    id="confirmPassword"
+                    className="form-control form-control-lg input-block"
+                    autocomplete="off"
+                    spellCheck="true"
+                    onChange={this.handleChange}
+                    aria-describedby="input-check-3834 "
+                    value={this.state.confirmPassword}
+                  />
+                </div>
+                <div className="mt-0">
+                  {this.state.error ? (
+                    <div>
+                      <p className="text-danger">{this.state.error}</p>
+                    </div>
+                  ) : null}
 
-          <div className="form-group">
-            {this.state.error ? (
-              <p className="text-danger">{this.state.error}</p>
-            ) : null}
+                  {this.props.signUpError ? (
+                    <div>
+                      <p className="text-danger">{this.props.signUpError}</p>
+                    </div>
+                  ) : null}
+                </div>
+                <div className="">
+                  <button
+                    className="btn btn-primary px-5"
+                    type="submit"
+                    onClick={this.handleSubmit}
+                  >
+                    Signup
+                  </button>
+                  <hr />
+                  <p className="already text-dark">
+                    Have an account?{" "}
+                    <Link className="move text-dark" to="/login">
+                      Login
+                    </Link>
+                  </p>
+                </div>
+              </form>
+            </Paper>
           </div>
-          <div className="form-group">
-            <button className="btn btn-primary px-5" type="submit">
-              Sign up
-            </button>
+        </div>
+        {/* <div className="py-6 py-sm-8 jumbotron-codelines">
+          <div className="p-responsive position-relative container-lg">
+            <div className="d-md-flex flex-items-center gutter-md-spacious">
+              <div className="col-md-7 text-center text-md-left ">
+                <h1 className="h000-mktg text-white lh-condensed-ultra mb-3">
+                  Built by children for children
+                </h1>
+                <p class="lead-mktg mb-4">
+                  MagHour is a website that children can talk with other people.
+                </p>
+              </div>
+              <div class="mx-auto col-sm-8 col-md-6">
+                <Paper className="py-4 px-4 px-md-3 px-lg-4">
+                  
+                </Paper>
+              </div>
+            </div>
           </div>
-          <hr></hr>
-          <p className="already">
-            Already have an account?{" "}
-            <Link className="move" to="/login">
-              Login
-            </Link>
-          </p>
-        </form>
+        </div> */}
       </div>
     );
   }
@@ -128,7 +225,7 @@ class SignUp extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    authError: state.auth.authError,
+    signUpError: state.auth.signUpError,
     auth: state.firebase.auth,
   };
 };
