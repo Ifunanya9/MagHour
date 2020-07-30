@@ -38,6 +38,7 @@ export const signUp = (newUser) => {
           lastName: newUser.lastName,
           initials: newUser.userName[0],
           username: newUser.userName,
+          email: newUser.email,
         });
       })
       .then(() => {

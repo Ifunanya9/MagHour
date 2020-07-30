@@ -46,7 +46,8 @@ body {
 
 @media screen and (max-width: 767px) {
   .hi {
-    background-color: #343a40;
+    background: #343a40 !important;
+    /* background-color: #000000; */
     align-items: center;
     width: 20%;
   }

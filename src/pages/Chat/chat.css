@@ -16,6 +16,12 @@
   text-align: center;
 }
 
+/* .cart-icon {
+  color: green;
+  height: 100%;
+  width: 100%;
+} */
+
 .text {
   display: block;
   text-align: center;
@@ -63,7 +69,6 @@ body {
 }
 
 .chat-area .chat-bubble .current-user {
-  margin-left: auto;
   background-color: #a5d6a7 !important;
   text-transform: uppercase;
 }

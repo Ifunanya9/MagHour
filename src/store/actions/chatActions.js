@@ -10,8 +10,11 @@ export const createChat = (chat) => {
       .add({
         content: chat.content,
         authorUsername: profile.username,
+        authorFirstName: profile.firstName,
+        authorLastName: profile.lastName,
         authorEmail: auth.email,
         authorId: authorId,
+        createdAt: new Date(),
       })
       .then(() => {
         dispatch({ type: "CREATE_CHAT" });
@@ -28,6 +31,7 @@ export const deleteChat = (id) => {
     firestore
       .collection("chats")
       .doc(id)
+      .delete()
       .then(() => {
         dispatch({ type: "DELETE_CHAT" });
       })
@@ -43,8 +47,9 @@ export const editChat = (id, chat) => {
     firestore
       .collection("chats")
       .doc(id)
-      .edit({
+      .update({
         content: chat.content,
+        updatedAt: new Date(),
       })
       .then(() => {
         dispatch({ type: "EDIT_CHAT" });

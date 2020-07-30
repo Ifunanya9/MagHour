@@ -25,7 +25,7 @@ const Header = (props) => {
             />
             <Navbar.Collapse id="basic-navbar-nav">
               {auth.uid ? (
-                <Nav className="justify-content-center hi" activeKey="/home">
+                <Nav activeKey="/home">
                   <Nav.Item>
                     <Nav.Link href="/chat" eventKey="/chat">
                       Message
@@ -42,6 +42,12 @@ const Header = (props) => {
                     </Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
+                    <Nav.Link href="/private-chat" eventKey="/private-chat">
+                      Private
+                    </Nav.Link>
+                  </Nav.Item>
+
+                  <Nav.Item>
                     <Nav.Link href="/chat" eventKey="/chat">
                       Profile
                     </Nav.Link>
@@ -52,7 +58,7 @@ const Header = (props) => {
                   </Nav.Item>
                 </Nav>
               ) : (
-                <Nav className="justify-content-center hi" activeKey="/home">
+                <Nav activeKey="/home">
                   <Nav.Item>
                     <Nav.Link href="/login" eventKey="/login">
                       Signin

@@ -7,8 +7,10 @@ import Login from "./pages/Login/Login";
 import About from "./pages/About/About";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles.css";
+// import Default from "./pages/Default/Default";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
+import PrivateChat from "./pages/Chat/PrivateChat/PrivateChat";
 
 class App extends Component {
   render() {
@@ -24,11 +26,13 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/chat" component={Chat} />
+            <Route path="/private-chat" component={PrivateChat} />
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
             <Route path="/about" component={About} />
+            {/* <Route component={Default} /> */}
           </Switch>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </Router>
       // );

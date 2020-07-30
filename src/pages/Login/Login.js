@@ -123,7 +123,7 @@ class Login extends Component {
                     Sign up
                   </button>
                 </div>
-                <hr></hr>
+                {/* <hr></hr>
                 <p className="also">
                   You can also sign up with any of these services
                 </p>
@@ -144,7 +144,7 @@ class Login extends Component {
                   >
                     Sign up with GitHub
                   </button>
-                </div>
+                </div> */}
                 <hr />
                 <p className="already text-dark">
                   Don't have an account?{" "}

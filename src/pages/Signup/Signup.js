@@ -25,8 +25,28 @@ class SignUp extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
+    if (this.props.signUpError) {
+      this.setState({
+        error: this.props.signUpError,
+      });
+    }
     if (this.state.confirmPassword !== this.state.password) {
       const err = "Passwords do not match";
+      this.setState({
+        error: err,
+      });
+    } else if (this.state.userName === "") {
+      const err = "Username is required";
+      this.setState({
+        error: err,
+      });
+    } else if (this.state.firstName === "") {
+      const err = "Firstname is required";
+      this.setState({
+        error: err,
+      });
+    } else if (this.state.lastName === "") {
+      const err = "Lastname is required";
       this.setState({
         error: err,
       });
@@ -173,11 +193,11 @@ class SignUp extends Component {
                     </div>
                   ) : null}
 
-                  {this.props.signUpError ? (
+                  {/* {this.props.signUpError ? (
                     <div>
                       <p className="text-danger">{this.props.signUpError}</p>
                     </div>
-                  ) : null}
+                  ) : null} */}
                 </div>
                 <div className="">
                   <button

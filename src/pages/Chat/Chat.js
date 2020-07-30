@@ -14,6 +14,13 @@ class Chat extends Component {
     error: "",
   };
 
+  componentDidUpdate = () => {
+    const container = document.getElementById("chatview-container");
+    if (container) {
+      container.scrollTo(0, container.scrollHeight);
+    }
+  };
+
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value,
@@ -39,12 +46,16 @@ class Chat extends Component {
     return (
       <div>
         <br />
-        <div className="container">
+        <div className="container rounded-1">
           <ScrollToBottom className="messages">
-            <div className="chat-area" ref={this.myRef}>
+            <div id="chatview-container" className="chat-area" ref={this.myRef}>
               {chats &&
-                chats.map((chat) => {
-                  return <ChatSummary chat={chat} auth={auth} />;
+                chats.map((chat, index) => {
+                  return (
+                    <div key={index}>
+                      <ChatSummary chat={chat} auth={auth} />
+                    </div>
+                  );
                 })}
             </div>
           </ScrollToBottom>

@@ -1,0 +1,11 @@
+.signOutBtn {
+  position: "absolute";
+  bottom: "0px";
+  left: "0px";
+  width: "300px";
+  border-radius: "0px";
+  background-color: "#227092";
+  height: "35px";
+  box-shadow: "0px 0px 2px black";
+  color: "white";
+}
