@@ -48,7 +48,7 @@ const Header = (props) => {
                   </Nav.Item>
 
                   <Nav.Item>
-                    <Nav.Link href="/chat" eventKey="/chat">
+                    <Nav.Link href="/profile" eventKey="/profile">
                       Profile
                     </Nav.Link>
                   </Nav.Item>

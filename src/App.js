@@ -11,6 +11,7 @@ import "./styles.css";
 import Header from "./components/Header";
 // import Footer from "./components/Footer";
 import PrivateChat from "./pages/Chat/PrivateChat/PrivateChat";
+import Profile from "./pages/Profile/Profile";
 
 class App extends Component {
   render() {
@@ -30,6 +31,7 @@ class App extends Component {
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
             <Route path="/about" component={About} />
+            <Route path="/profile" component={Profile} />
             {/* <Route component={Default} /> */}
           </Switch>
           {/* <Footer /> */}
