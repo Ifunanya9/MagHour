@@ -26,18 +26,7 @@ class ChatList extends Component {
     return (
       <div>
         <br />
-        <br />
-        <br />
         <main className={classes.root}>
-          <Button
-            variant="contained"
-            fullWidth
-            color="primary"
-            className={classes.newChatBtn}
-            onClick={this.newChat}
-          >
-            New Message
-          </Button>
           <List>
             {this.props.chats &&
               this.props.chats.map((chat, index) => {
@@ -87,6 +76,14 @@ class ChatList extends Component {
                 );
               })}
           </List>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.newChatBtn}
+            onClick={this.newChat}
+          >
+            +
+          </Button>
         </main>
       </div>
     );

@@ -51,14 +51,14 @@ class HomePage extends Component {
                           className="btn btn-primary px-5 mr-3 create"
                           to="/signup"
                         >
-                          Create New Account
+                          Sign Up
                         </Link>
                         <br />
                         <Link
                           className="btn btn-secondary px-5 log center"
                           to="/login"
                         >
-                          Login to Your Account
+                          Sign In
                         </Link>
                       </div>
                     </div>

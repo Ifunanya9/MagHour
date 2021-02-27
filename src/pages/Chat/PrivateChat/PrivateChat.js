@@ -153,7 +153,12 @@ class PrivateChat extends Component {
             submitFn={this.submitMessage}
           ></ChatTextBox>
         ) : null}
-        {this.state.newChatFormVisible ? <NewChat></NewChat> : null}
+        {this.state.newChatFormVisible ? (
+          <NewChat
+            goToChatFn={this.goToChat}
+            newChatSubmitFn={this.newChatSubmit}
+          ></NewChat>
+        ) : null}
       </div>
     );
   }

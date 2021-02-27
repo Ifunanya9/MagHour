@@ -11,7 +11,13 @@ const styles = (theme) => ({
     cursor: "pointer",
   },
   newChatBtn: {
-    borderRadius: "0px",
+    borderRadius: "100%",
+    width: "60px",
+    height: "60px",
+    position: "absolute",
+    bottom: "0",
+    right: "50%",
+    transform: "translate(50%, -20%)",
   },
   unreadMessage: {
     color: "red",

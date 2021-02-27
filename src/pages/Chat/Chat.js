@@ -31,6 +31,10 @@ class Chat extends Component {
     e.preventDefault();
     try {
       await this.props.createChat(this.state);
+      this.setState({
+        content: "",
+        error: "",
+      });
     } catch (error) {
       this.setState({ error: error.message });
     }

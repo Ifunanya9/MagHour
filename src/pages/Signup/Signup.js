@@ -64,8 +64,6 @@ class SignUp extends Component {
     if (auth.uid) return <Redirect to="/" />;
     return (
       <div>
-        <br />
-        <br />
         <div className="jumbotron-codelines text-center center text-dark">
           <div className="mx-auto magin">
             <Paper className="py-4 px-4 px-md-3 px-lg-4">
@@ -83,108 +81,114 @@ class SignUp extends Component {
                   </Link>
                 </h1>
                 <br />
-                <div className="mt-0">
-                  <label className="form-label h6" htmlFor="userName">
-                    Username
-                  </label>
-                  <input
-                    required
-                    autoFocus
-                    type="text"
-                    name="userName"
-                    id="userName"
-                    className="form-control form-control-lg input-block"
-                    autocomplete="off"
-                    spellCheck="true"
-                    onChange={this.handleChange}
-                    aria-describedby="input-check-3834 "
-                    value={this.state.userName}
-                  />
+                <div className="row">
+                  <div className="mt-0 col">
+                    <label className="form-label h6" htmlFor="userName">
+                      Username
+                    </label>
+                    <input
+                      required
+                      autoFocus
+                      type="text"
+                      name="userName"
+                      id="userName"
+                      className="form-control form-control-lg input-block"
+                      autocomplete="off"
+                      spellCheck="true"
+                      onChange={this.handleChange}
+                      aria-describedby="input-check-3834 "
+                      value={this.state.userName}
+                    />
+                  </div>
+                  <div className="mt-0 col">
+                    <label className="form-label h6" htmlFor="email">
+                      Email
+                    </label>
+                    <input
+                      required
+                      type="email"
+                      name="email"
+                      id="email"
+                      className="form-control form-control-lg input-block"
+                      autocomplete="off"
+                      spellCheck="true"
+                      onChange={this.handleChange}
+                      aria-describedby="input-check-3834 "
+                      value={this.state.email}
+                    />
+                  </div>
                 </div>
-                <div className="mt-0">
-                  <label className="form-label h6" htmlFor="firstName">
-                    First Name
-                  </label>
-                  <input
-                    required
-                    type="text"
-                    name="firstName"
-                    id="firstName"
-                    className="form-control form-control-lg input-block"
-                    autocomplete="off"
-                    spellCheck="true"
-                    onChange={this.handleChange}
-                    aria-describedby="input-check-3834 "
-                    value={this.state.firstName}
-                  />
+                <div className="row">
+                  <div className="mt-0 col">
+                    <label className="form-label h6" htmlFor="firstName">
+                      First Name
+                    </label>
+                    <input
+                      required
+                      type="text"
+                      name="firstName"
+                      id="firstName"
+                      className="form-control form-control-lg input-block"
+                      autocomplete="off"
+                      spellCheck="true"
+                      onChange={this.handleChange}
+                      aria-describedby="input-check-3834 "
+                      value={this.state.firstName}
+                    />
+                  </div>
+                  <div className="mt-0 col">
+                    <label className="form-label h6" htmlFor="lastName">
+                      Last Name
+                    </label>
+                    <input
+                      required
+                      type="text"
+                      name="lastName"
+                      id="lastName"
+                      className="form-control form-control-lg input-block"
+                      autocomplete="off"
+                      spellCheck="true"
+                      onChange={this.handleChange}
+                      aria-describedby="input-check-3834 "
+                      value={this.state.lastName}
+                    />
+                  </div>
                 </div>
-                <div className="mt-0">
-                  <label className="form-label h6" htmlFor="lastName">
-                    Last Name
-                  </label>
-                  <input
-                    required
-                    type="text"
-                    name="lastName"
-                    id="lastName"
-                    className="form-control form-control-lg input-block"
-                    autocomplete="off"
-                    spellCheck="true"
-                    onChange={this.handleChange}
-                    aria-describedby="input-check-3834 "
-                    value={this.state.lastName}
-                  />
-                </div>
-                <div className="mt-0">
-                  <label className="form-label h6" htmlFor="email">
-                    Email
-                  </label>
-                  <input
-                    required
-                    type="email"
-                    name="email"
-                    id="email"
-                    className="form-control form-control-lg input-block"
-                    autocomplete="off"
-                    spellCheck="true"
-                    onChange={this.handleChange}
-                    aria-describedby="input-check-3834 "
-                    value={this.state.email}
-                  />
-                </div>
-                <div className="mt-0">
-                  <label className="form-label h6" htmlFor="password">
-                    Password
-                  </label>
-                  <input
-                    required
-                    type="password"
-                    name="password"
-                    id="password"
-                    className="form-control form-control-lg input-block"
-                    autocomplete="off"
-                    spellCheck="true"
-                    onChange={this.handleChange}
-                    aria-describedby="input-check-3834 "
-                    value={this.state.password}
-                  />
-                </div>
-                <div className="mt-0">
-                  <label className="form-label h6" htmlFor="confirmPassword">
-                    Confirm Password
-                  </label>
-                  <input
-                    required
-                    type="password"
-                    name="confirmPassword"
-                    id="confirmPassword"
-                    className="form-control form-control-lg input-block"
-                    autocomplete="off"
-                    spellCheck="true"
-                    onChange={this.handleChange}
-                    aria-describedby="input-check-3834 "
-                    value={this.state.confirmPassword}
-                  />
+                <div className="row">
+                  <div className="mt-0 col">
+                    <label className="form-label h6" htmlFor="password">
+                      Password
+                    </label>
+                    <input
+                      required
+                      type="password"
+                      name="password"
+                      id="password"
+                      className="form-control form-control-lg input-block"
+                      autocomplete="off"
+                      spellCheck="true"
+                      onChange={this.handleChange}
+                      aria-describedby="input-check-3834 "
+                      value={this.state.password}
+                    />
+                  </div>
+                  <div className="mt-0 col">
+                    <label className="form-label h6" htmlFor="confirmPassword">
+                      Confirm Password
+                    </label>
+                    <input
+                      required
+                      type="password"
+                      name="confirmPassword"
+                      id="confirmPassword"
+                      className="form-control form-control-lg input-block"
+                      autocomplete="off"
+                      spellCheck="true"
+                      onChange={this.handleChange}
+                      aria-describedby="input-check-3834 "
+                      value={this.state.confirmPassword}
+                    />
+                  </div>
                 </div>
                 <div className="mt-0">
                   {this.state.error ? (

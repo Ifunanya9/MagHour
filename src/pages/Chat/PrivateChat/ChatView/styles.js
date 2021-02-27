@@ -57,13 +57,13 @@
 
 const styles = (theme) => ({
   content: {
-    height: "calc(80vh - 100px)",
+    height: "calc(75vh - 100px)",
     overflow: "auto",
     padding: "25px",
     marginLeft: "300px",
     boxSizing: "border-box",
     overflowY: "scroll",
-    top: "100px",
+    top: "170px",
     width: "calc(100% - 300px)",
     position: "absolute",
   },
